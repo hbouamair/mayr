@@ -5,7 +5,8 @@ export const SITE_LOGO_MARK = "/logo-mayr.png";
 export const SITE_BRAND_NAME = "Marrakech Alchemy Yoga Retreats";
 
 export const SITE_EMAIL = "Marrakech.alchemy@gmail.com";
-export const SITE_PHONE_E164 = "21261695998";
+/** Morocco WhatsApp — digits only for wa.me (same as +212 661 695998) */
+export const SITE_PHONE_E164 = "212661695998";
 export const WHATSAPP_LINK = `https://wa.me/${SITE_PHONE_E164}`;
 export const INSTAGRAM_URL = "https://www.instagram.com/marrakechalchemyyogarereats/";
 export const TIKTOK_URL = "https://www.tiktok.com/@m_a_y_r?_t=8sS2GJszs0Y&_r=1";
