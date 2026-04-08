@@ -102,7 +102,7 @@ export function BookingForm({ initialOfferId, initialMessage = "", lockOffer = f
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="min-w-0 space-y-6 sm:space-y-8">
       {error && (
         <p
           className="rounded-xl border border-terracotta/40 bg-terracotta/10 px-4 py-3 text-sm text-ink"
@@ -145,7 +145,7 @@ export function BookingForm({ initialOfferId, initialMessage = "", lockOffer = f
         </div>
       )}
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid min-w-0 gap-5 sm:grid-cols-2 sm:gap-6">
         <div>
           <label htmlFor={lockOffer ? "modal-name" : "name"} className="mb-2 block font-body text-xs font-medium tracking-[0.12em] text-muted uppercase">
             Name
@@ -199,21 +199,21 @@ export function BookingForm({ initialOfferId, initialMessage = "", lockOffer = f
         <textarea
           id={lockOffer ? "modal-message" : "message"}
           name="message"
-          rows={4}
+          rows={lockOffer ? 3 : 4}
           defaultValue={initialMessage || undefined}
-          className="input-brand w-full resize-y rounded-xl px-4 py-3 text-base text-ink placeholder:text-muted/60"
+          className="input-brand min-h-[6.5rem] w-full resize-y rounded-xl px-4 py-3 text-base text-ink placeholder:text-muted/60 sm:min-h-0"
           placeholder="Dietary needs, travel questions, or preferred dates…"
         />
       </div>
 
-      <div className="rounded-xl border border-border-subtle bg-parchment/90 p-5 backdrop-blur-sm">
-        <label className="flex cursor-pointer gap-3 text-sm leading-relaxed text-muted">
+      <div className="rounded-xl border border-border-subtle bg-parchment/90 p-4 backdrop-blur-sm sm:p-5">
+        <label className="flex min-w-0 cursor-pointer gap-3 text-sm leading-relaxed text-muted">
           <input
             type="checkbox"
             name="acceptedTerms"
             className="mt-1 h-4 w-4 shrink-0 rounded border-border-strong text-terracotta focus:ring-terracotta/40"
           />
-          <span>
+          <span className="min-w-0 break-words">
             I confirm that I have read and agree to the{" "}
             <Link href="/terms" className="text-terracotta font-medium underline underline-offset-[5px] hover:text-terracotta-glow" target="_blank">
               Terms & Conditions
@@ -229,7 +229,7 @@ export function BookingForm({ initialOfferId, initialMessage = "", lockOffer = f
       <button
         type="submit"
         disabled={isPending}
-        className="btn-cta-primary w-full rounded-2xl py-4 font-body text-xs font-semibold tracking-[0.2em] text-white uppercase disabled:opacity-60 sm:w-auto sm:px-12"
+        className="btn-cta-primary w-full rounded-2xl py-3.5 font-body text-[11px] font-semibold tracking-[0.2em] text-white uppercase disabled:opacity-60 sm:py-4 sm:text-xs sm:w-auto sm:px-12"
       >
         {isPending ? "Sending…" : onSuccessNavigate ? "Submit & open WhatsApp" : "Submit inquiry"}
       </button>

@@ -220,10 +220,13 @@ export function RoomPricingCards() {
       </div>
 
       {modalOpen ? (
-        <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-4" role="presentation">
+        <div
+          className="fixed inset-0 z-[100] flex flex-col bg-parchment sm:flex sm:items-center sm:justify-center sm:bg-transparent sm:p-4"
+          role="presentation"
+        >
           <button
             type="button"
-            className="absolute inset-0 bg-ink/45 backdrop-blur-[2px]"
+            className="absolute inset-0 hidden bg-ink/45 backdrop-blur-[2px] sm:block"
             aria-label="Close booking dialog"
             onClick={closeModal}
           />
@@ -231,32 +234,60 @@ export function RoomPricingCards() {
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            className="relative z-[101] max-h-[min(92vh,900px)] w-full max-w-2xl overflow-y-auto rounded-t-[1.5rem] border border-white/60 bg-parchment/95 p-6 shadow-[0_-8px_40px_-8px_rgba(36,28,23,0.2)] sm:rounded-[1.375rem] sm:border-gold-logo/20 sm:p-8"
+            className="relative z-[101] flex min-h-0 min-w-0 w-full flex-1 flex-col overflow-hidden bg-parchment sm:max-h-[min(92vh,900px)] sm:max-w-2xl sm:flex-none sm:overflow-y-auto sm:rounded-[1.375rem] sm:border sm:border-gold-logo/20 sm:shadow-[0_24px_64px_-24px_rgba(36,28,23,0.2)]"
           >
-            <div className="mb-6 flex items-start justify-between gap-4">
-              <div>
-                <p id={titleId} className="font-heading text-xl font-medium tracking-tight text-ink">
-                  Complete your booking
-                </p>
-                <p className="mt-1 font-body text-sm text-muted">We’ll open WhatsApp with your details so you can send the message in one tap.</p>
-              </div>
+            <p id={titleId} className="sr-only">
+              Complete your booking — we&apos;ll open WhatsApp with your details so you can send the message in one tap.
+            </p>
+
+            {/* Mobile: full-screen chrome + close */}
+            <div className="flex shrink-0 items-center justify-between gap-3 border-b border-border-subtle/90 bg-parchment px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:hidden">
+              <p className="min-w-0 flex-1 font-heading text-[1.05rem] font-medium leading-tight tracking-tight text-ink">
+                Complete your booking
+              </p>
               <button
                 type="button"
                 onClick={closeModal}
-                className="shrink-0 rounded-full border border-border-subtle bg-white/60 p-2 text-ink transition hover:bg-white hover:text-terracotta"
-                aria-label="Close"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-white/80 text-ink shadow-sm transition active:bg-white active:text-terracotta"
+                aria-label="Close booking"
               >
-                <X className="h-4 w-4" strokeWidth={2} />
+                <X className="h-5 w-5" strokeWidth={2} />
               </button>
             </div>
-            <div className="booking-modal-form rounded-xl border border-border-subtle/90 bg-surface-elevated/95 p-5 sm:p-6">
-              <BookingForm
-                key={`${selectedOfferId}-${bookingInitialMessage.slice(0, 48)}`}
-                initialOfferId={selectedOfferId}
-                initialMessage={bookingInitialMessage}
-                lockOffer
-                onSuccessNavigate={closeModal}
-              />
+
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] pt-4 [-webkit-overflow-scrolling:touch] sm:flex-none sm:overflow-visible sm:px-8 sm:pb-8 sm:pt-8">
+              <div className="mb-5 hidden min-w-0 items-start justify-between gap-3 sm:mb-6 sm:flex sm:gap-4">
+                <div className="min-w-0 flex-1 pr-1">
+                  <p className="font-heading text-xl font-medium leading-snug tracking-tight text-ink">
+                    Complete your booking
+                  </p>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-muted">
+                    We’ll open WhatsApp with your details so you can send the message in one tap.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="flex min-h-10 min-w-10 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-white/60 p-2 text-ink transition hover:bg-white hover:text-terracotta"
+                  aria-label="Close"
+                >
+                  <X className="h-4 w-4" strokeWidth={2} />
+                </button>
+              </div>
+
+              <p className="mb-4 font-body text-sm leading-relaxed text-muted sm:hidden">
+                We’ll open WhatsApp with your details so you can send the message in one tap.
+              </p>
+
+              <div className="booking-modal-form min-w-0 rounded-xl border border-border-subtle/90 bg-surface-elevated/95 p-4 sm:p-6">
+                <BookingForm
+                  key={`${selectedOfferId}-${bookingInitialMessage.slice(0, 48)}`}
+                  initialOfferId={selectedOfferId}
+                  initialMessage={bookingInitialMessage}
+                  lockOffer
+                  onSuccessNavigate={closeModal}
+                />
+              </div>
             </div>
           </div>
         </div>
