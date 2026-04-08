@@ -27,6 +27,26 @@
   --glow-gold: color-mix(in srgb, var(--gold-logo) 20%, transparent);
   --background: var(--sand);
   --foreground: var(--ink);
+  /* Space below fixed header — matches header block + small gap; used by main, hero pull-up, sticky columns */
+  --main-pt: 6.85rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --main-pt: 7.1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --main-pt: 7.35rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --main-pt: 7.5rem;
+  }
 }
 
 @theme inline {

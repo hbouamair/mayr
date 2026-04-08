@@ -9,6 +9,9 @@ import {
 export const heroTagline =
   "Morocco · Restoration · Alchemy";
 
+/** Line under the main hero title (legacy mayr.ma home) */
+export const heroSubtagline = "Where Moroccan charm meets yoga serenity";
+
 export const homeIntro =
   "Join us for a soulful & authentic yoga journey! Book your spot now and let the Moroccan magic unfold at Marrakech Alchemy Yoga Retreats!";
 
@@ -63,6 +66,56 @@ export const retreatSchedule = [
 export const retreatScheduleClosing =
   "This carefully curated schedule offers a blend of movement, creativity, relaxation, and cultural immersion, making each day a truly transformative experience.";
 
+/** Vertical timeline on Retreat program — 8 days / 7 nights per week */
+export type RetreatCalendar2026Entry = {
+  id: string;
+  month: string;
+  /** Full date range label */
+  dateRange: string;
+  title: string;
+  description: string;
+};
+
+export const retreatCalendar2026Intro =
+  "Three curated weeks in 2026 — Atlas stillness, Medina soul, and the full Marrakech Alchemy journey. Each block follows our signature 8-day, two-location itinerary.";
+
+export const retreatCalendar2026: RetreatCalendar2026Entry[] = [
+  {
+    id: "2026-05",
+    month: "May",
+    dateRange: "May 3 – 10, 2026",
+    title: "Spring renewal in Morocco",
+    description:
+      "Wake to mountain air in the Atlas, then follow the arc into the Medina — Vinyasa and restorative practices, sound journeys, Moroccan cooking, and slow evenings under open sky. A gentle reopening of body and senses as the land greens.",
+  },
+  {
+    id: "2026-07",
+    month: "July",
+    dateRange: "July 5 – 12, 2026",
+    title: "High summer immersion",
+    description:
+      "Long light, warm nights, and full cultural rhythm — workshops, souk walks, tea ritual, and our evening yin and sound. Space to go deep in community while the city hums at its most alive.",
+  },
+  {
+    id: "2026-09",
+    month: "September",
+    dateRange: "September 6 – 13, 2026",
+    title: "Harvest stillness & return",
+    description:
+      "As heat softens, settle into a week of integration — journaling walks, pottery or mandala afternoons, and restorative closure before you carry the retreat home. Ideal if you crave clarity and a grounded finish to the season.",
+  },
+];
+
+/** Prefills the booking message (and WhatsApp “notes” block) for a chosen 2026 week */
+export function retreatCalendarWeekBookingPrefill(entry: RetreatCalendar2026Entry): string {
+  return [
+    `I'd like to book this 2026 week: ${entry.title}`,
+    `Dates: ${entry.dateRange} (${entry.month} 2026).`,
+    "",
+    "Please confirm availability. Preferred room: I'll choose below or add notes here.",
+  ].join("\n");
+}
+
 export const pricingMeta = {
   nights: "8 nights, 7 days",
   spotsPrivate: 3,
@@ -71,6 +124,8 @@ export const pricingMeta = {
   totalSpots: 15,
   tripleNote:
     "Triple rooms may be held until private and twin spaces are filled — ask us for availability.",
+  /** Shown on booking room cards */
+  depositSecureSpot: "Deposit 500 € to secure your spot",
 };
 
 export const pricingRows = [

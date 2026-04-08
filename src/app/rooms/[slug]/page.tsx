@@ -139,7 +139,7 @@ export default async function RetreatDetailPage({ params }: Props) {
           </div>
         </div>
 
-        <aside className="min-w-0 rounded-2xl border border-white/45 bg-white/40 p-6 backdrop-blur-xl sm:p-8 lg:sticky lg:top-28">
+        <aside className="min-w-0 rounded-2xl border border-white/45 bg-white/40 p-6 backdrop-blur-xl sm:p-8 lg:sticky lg:top-[calc(var(--main-pt)+0.75rem)]">
           <p className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-muted">Next step</p>
           <div className="mt-6 flex flex-col gap-3">
             {bookingHref ? (

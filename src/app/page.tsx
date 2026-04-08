@@ -2,6 +2,7 @@ import { Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { EditorialSectionTitle, splitEditorialTitle } from "@/components/EditorialSectionTitle";
+import { HomeHeroSlider } from "@/components/HomeHeroSlider";
 import { SectionIntro } from "@/components/SectionIntro";
 import { ServiceCard } from "@/components/ServiceCard";
 import { FoodSection } from "@/components/FoodSection";
@@ -10,6 +11,7 @@ import {
   accommodationGalleryImages,
   accommodationParagraphs,
   heroTagline,
+  heroSubtagline,
   homeIntro,
   roomTypesHighlight,
   services,
@@ -17,22 +19,27 @@ import {
 } from "@/lib/site-content";
 
 export default function Home() {
-  const heroHeadline = splitEditorialTitle("Marrakech Alchemy Yoga Retreats");
+  const contactHeadline = splitEditorialTitle("Contact us");
   return (
     <div className="min-w-0">
-      <section className="zelij-hero-rosettes relative overflow-hidden border-b border-border-subtle">
-        <div className="relative z-[1] mx-auto min-w-0 max-w-6xl px-4 py-24 sm:px-6 sm:py-32 lg:py-40">
-          <div className="flex min-w-0 items-center gap-5">
-            <span className="lux-rule shrink-0" aria-hidden />
-            <p className="min-w-0 font-body text-[11px] font-medium tracking-[0.32em] text-terracotta/90 uppercase sm:text-xs">
+      <HomeHeroSlider>
+        <div className="flex min-w-0 flex-col items-center text-center sm:items-start sm:text-left">
+          <div className="flex min-w-0 items-center justify-center gap-5 sm:justify-start">
+            <span className="h-px w-10 shrink-0 bg-white/45 sm:w-12" aria-hidden />
+            <p className="min-w-0 font-body text-[11px] font-medium tracking-[0.32em] text-white/85 uppercase sm:text-xs">
               {heroTagline}
             </p>
           </div>
-          <div className="mt-8 max-w-4xl">
-            <EditorialSectionTitle as="h1" highlight={heroHeadline.highlight} rest={heroHeadline.rest} />
-          </div>
-          <p className="mt-8 max-w-2xl font-body text-lg font-light leading-[1.75] tracking-wide text-muted">{homeIntro}</p>
-          <div className="mt-14 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+          <h1 className="mt-8 max-w-4xl font-heading text-[clamp(2.2rem,6.2vw,4.25rem)] font-medium leading-[1.05] tracking-tight text-balance text-white">
+            Marrakech Alchemy Yoga Retreats
+          </h1>
+          <p className="mt-4 max-w-2xl font-body text-lg font-light tracking-wide text-white/88 sm:text-xl">
+            {heroSubtagline}
+          </p>
+          <p className="mt-6 max-w-2xl font-body text-base font-light leading-[1.75] tracking-wide text-white/75 sm:text-lg">
+            {homeIntro}
+          </p>
+          <div className="mt-12 flex w-full min-w-0 flex-col gap-4 sm:mt-14 sm:w-auto sm:flex-row sm:items-center sm:gap-5">
             <Link
               href="/booking"
               className="btn-cta-hero-light inline-flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-lg px-10 py-3.5 font-body text-[10px] font-semibold tracking-[0.24em] uppercase"
@@ -42,13 +49,13 @@ export default function Home() {
             </Link>
             <Link
               href="/retreat-program"
-              className="btn-cta-outline inline-flex min-h-[3.25rem] items-center justify-center rounded-lg px-10 py-3.5 font-body text-[10px] font-semibold tracking-[0.2em] uppercase"
+              className="inline-flex min-h-[3.25rem] items-center justify-center rounded-lg border border-white/70 bg-white/5 px-10 py-3.5 font-body text-[10px] font-semibold tracking-[0.24em] text-white uppercase backdrop-blur-sm transition hover:border-white hover:bg-white/10"
             >
-              Retreat program
+              Explore now
             </Link>
           </div>
         </div>
-      </section>
+      </HomeHeroSlider>
 
       <section className="mx-auto min-w-0 max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <SectionIntro
@@ -135,7 +142,11 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-8">
-            <EditorialSectionTitle as="h2" highlight="Contact" rest="us" />
+            <EditorialSectionTitle
+              as="h2"
+              highlight={contactHeadline.highlight}
+              rest={contactHeadline.rest}
+            />
           </div>
           <p className="mt-6 max-w-md font-body text-sm font-light leading-relaxed tracking-wide text-muted sm:text-base">
             Questions, dates, or a gentle hello — we read every message with care.

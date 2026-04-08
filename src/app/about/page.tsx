@@ -32,7 +32,7 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-          <aside className="min-w-0 lg:sticky lg:top-28">
+          <aside className="min-w-0 lg:sticky lg:top-[calc(var(--main-pt)+0.75rem)]">
             <div className="rounded-2xl border border-gold-logo/20 bg-gradient-to-b from-parchment/90 to-sand/80 p-6 backdrop-blur-md">
               <p className="font-heading text-lg font-medium tracking-tight text-ink">At a glance</p>
               <ul className="mt-4 space-y-3 font-body text-sm text-muted">

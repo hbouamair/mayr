@@ -16,20 +16,37 @@ const NAV = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({
+  href,
+  children,
+  tone,
+}: {
+  href: string;
+  children: React.ReactNode;
+  tone: "onHero" | "default";
+}) {
   const pathname = usePathname();
   const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const onHero = tone === "onHero";
   return (
     <Link
       href={href}
       className={`relative px-3 py-2.5 font-body text-xs font-medium tracking-[0.12em] uppercase transition-colors duration-300 sm:px-3.5 xl:px-4 ${
-        active ? "text-ink" : "text-ink/72 hover:text-ink"
+        onHero
+          ? active
+            ? "text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)]"
+            : "text-white/82 drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)] hover:text-white"
+          : active
+            ? "text-ink"
+            : "text-ink/72 hover:text-ink"
       } group/nav`}
     >
       {children}
       <span
-        className={`absolute bottom-1 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-gold-logo to-terracotta transition-all duration-300 group-hover/nav:w-3/4 ${
-          active ? "w-3/4" : ""
+        className={`absolute bottom-1 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full transition-all duration-300 group-hover/nav:w-3/4 ${
+          onHero
+            ? `bg-gradient-to-r from-parchment/95 to-gold-bright/90 ${active ? "w-3/4" : ""}`
+            : `bg-gradient-to-r from-gold-logo to-terracotta ${active ? "w-3/4" : ""}`
         }`}
       />
     </Link>
@@ -37,10 +54,14 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 export function Header() {
+  const pathname = usePathname();
   const menuId = useId();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const isHome = pathname === "/";
+  const navOnHero = isHome && !scrolled;
+  const navTone = navOnHero ? "onHero" : "default";
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 80);
@@ -73,20 +94,26 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-50 px-3 transition-all duration-700 sm:px-5 lg:px-8 ${
+        className={`fixed left-0 right-0 top-0 z-50 px-4 transition-all duration-700 sm:px-6 ${
           loaded ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         } ${scrolled ? "pt-2 md:pt-3" : "pt-5 md:pt-6 lg:pt-7"}`}
       >
         <nav
           aria-label="Primary"
-          className={`zelij-nav-ribbon mx-auto w-full max-w-7xl overflow-visible rounded-2xl transition-all duration-500 ${
-            scrolled ? "glass-nav-merged--scrolled" : "glass-nav-merged"
+          className={`zelij-nav-ribbon mx-auto w-full max-w-6xl overflow-visible rounded-2xl transition-all duration-500 ${
+            navOnHero
+              ? "border border-white/22 bg-ink/22 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-[14px] backdrop-saturate-[125%]"
+              : scrolled
+                ? "glass-nav-merged--scrolled"
+                : "glass-nav-merged"
           }`}
         >
           <div className="relative flex min-h-[3.55rem] items-center justify-end gap-2 py-2.5 pl-[5.35rem] pr-2 sm:min-h-[3.7rem] sm:pl-[6rem] sm:pr-4 sm:py-3 md:pl-[6.5rem] lg:min-h-[3.85rem] lg:justify-between lg:pl-[7.25rem] lg:pr-5 xl:min-h-[4rem] xl:pl-[7.75rem]">
             <Link
               href="/"
-              className="group/logo absolute left-2 top-1/2 z-10 w-[4.65rem] -translate-y-1/2 shrink-0 transition-opacity duration-300 hover:opacity-90 sm:left-2.5 sm:w-[5.25rem] md:left-3 md:w-[5.75rem] lg:left-4 lg:w-[6.25rem] xl:w-[6.75rem]"
+              className={`group/logo absolute left-2 top-1/2 z-10 w-[4.65rem] -translate-y-1/2 shrink-0 transition-opacity duration-300 hover:opacity-90 sm:left-2.5 sm:w-[5.25rem] md:left-3 md:w-[5.75rem] lg:left-4 lg:w-[6.25rem] xl:w-[6.75rem] ${
+                navOnHero ? "drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]" : ""
+              }`}
               onClick={() => setMobileOpen(false)}
             >
               <div className="relative aspect-square w-full">
@@ -103,7 +130,7 @@ export function Header() {
 
             <div className="hidden flex-1 items-center justify-center gap-0 lg:flex xl:gap-0.5">
               {NAV.map((item) => (
-                <NavLink key={item.href} href={item.href}>
+                <NavLink key={item.href} href={item.href} tone={navTone}>
                   {item.label}
                 </NavLink>
               ))}
@@ -122,7 +149,9 @@ export function Header() {
 
             <button
               type="button"
-              className="relative flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-xl text-ink transition-colors active:bg-ink/5 lg:hidden"
+              className={`relative flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-xl transition-colors active:bg-white/10 lg:hidden ${
+                navOnHero ? "text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]" : "text-ink active:bg-ink/5"
+              }`}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               aria-controls={menuId}

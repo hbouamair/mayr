@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RetreatsCalendar2026 } from "@/components/RetreatsCalendar2026";
 import { RetreatsCatalog } from "@/components/RetreatsCatalog";
 import { RetreatsDiscoveryIntro } from "@/components/RetreatsDiscoveryIntro";
 
@@ -13,11 +14,14 @@ export default function RetreatProgramPage() {
     <div className="min-w-0">
       <section
         id="browse-retreats"
-        className="scroll-mt-36 pt-12 sm:pt-16 lg:pt-20"
+        className="scroll-mt-[calc(var(--main-pt)+1rem)] pt-12 sm:pt-16 lg:pt-20"
         aria-label="Browse scheduled retreat weeks"
       >
         <RetreatsDiscoveryIntro />
-        <RetreatsCatalog />
+        <RetreatsCalendar2026 />
+        <div className="mt-6 sm:mt-8">
+          <RetreatsCatalog />
+        </div>
       </section>
     </div>
   );

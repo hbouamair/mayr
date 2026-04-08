@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 function CardsFallback() {
   return (
-    <div className="grid animate-pulse gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+    <div className="grid animate-pulse grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:gap-10 xl:grid-cols-3 xl:gap-8 2xl:gap-10">
       {[1, 2, 3].map((i) => (
         <div key={i} className="card-2026 h-80 rounded-[1.375rem] bg-parchment/50" />
       ))}

@@ -2,6 +2,7 @@
 
 import { BookingForm } from "@/components/BookingForm";
 import { offers } from "@/lib/offers";
+import { pricingMeta } from "@/lib/site-content";
 import { getRetreatBySlug } from "@/lib/retreats";
 import { BedDouble, BedSingle, Check, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -112,14 +113,19 @@ export function RoomPricingCards() {
 
   return (
     <>
-      <div className="grid min-w-0 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7 xl:gap-8 md:items-stretch">
-        {offers.map((offer) => {
+      <div className="grid min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:gap-10 xl:grid-cols-3 xl:gap-8 2xl:gap-10 md:items-stretch">
+        {offers.map((offer, index) => {
           const featured = offer.id === "twin-room";
           const shortLabel = ROOM_LABELS[offer.id] ?? "Room";
+          const isLast = index === offers.length - 1;
           return (
             <article
               key={offer.id}
               className={`booking-price-card group relative flex flex-col overflow-hidden rounded-[1.75rem] border bg-gradient-to-b from-surface-elevated via-parchment/95 to-sand/30 shadow-[0_20px_50px_-28px_rgba(36,28,23,0.18)] md:min-h-[24rem] ${
+                isLast
+                  ? "sm:col-span-2 sm:mx-auto sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:col-span-1 xl:mx-0 xl:max-w-none"
+                  : ""
+              } ${
                 featured
                   ? "booking-price-card--featured border-gold-logo/45 shadow-[0_28px_60px_-22px_rgba(197,125,90,0.22)] ring-2 ring-gold-logo/25 md:z-[1]"
                   : "border-white/70 ring-1 ring-white/40"
@@ -206,10 +212,14 @@ export function RoomPricingCards() {
                   {offer.spotsNote ?? "Limited availability"}
                 </p>
 
+                <p className="mt-4 rounded-xl border border-gold-logo/25 bg-gradient-to-r from-parchment/90 to-sand/40 px-3.5 py-3 text-center font-body text-[12px] font-medium leading-snug text-ink/90 sm:text-[13px]">
+                  {pricingMeta.depositSecureSpot}
+                </p>
+
                 <button
                   type="button"
                   onClick={() => openModal(offer.id)}
-                  className="btn-cta-primary mt-6 inline-flex w-full items-center justify-center rounded-xl py-3.5 font-body text-[10px] font-semibold tracking-[0.22em] text-white uppercase"
+                  className="btn-cta-primary mt-5 inline-flex w-full items-center justify-center rounded-xl py-3.5 font-body text-[10px] font-semibold tracking-[0.22em] text-white uppercase"
                 >
                   Book now
                 </button>
