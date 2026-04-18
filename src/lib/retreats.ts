@@ -160,6 +160,18 @@ export const retreatMonths = [
   { key: "sep", label: "September" },
 ] as const;
 
+/** Calendar / cards — full month name from a listing `monthKey`. */
+export function retreatMonthDisplayName(monthKey: string): string {
+  const row = retreatMonths.find((m) => m.key === monthKey);
+  return row?.label ?? monthKey;
+}
+
+/** Date line only — strips the duration suffix after " · " in `dateLabel`. */
+export function retreatListingDateHeadline(dateLabel: string): string {
+  const head = dateLabel.split(" · ")[0];
+  return head?.trim() || dateLabel;
+}
+
 /** Place filter — matches `placeKey` on each listing */
 export const retreatPlaceOptions = [
   { key: "all", label: "All places" },

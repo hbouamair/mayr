@@ -1,13 +1,13 @@
 "use client";
 
 import { BookingForm } from "@/components/BookingForm";
-import { offers } from "@/lib/offers";
 import {
   retreatCalendar2026,
   retreatCalendar2026Intro,
   retreatCalendarWeekBookingPrefill,
   type RetreatCalendar2026Entry,
 } from "@/lib/site-content";
+import { retreatListingDateHeadline, retreatMonthDisplayName } from "@/lib/retreats";
 import { MapPin, X } from "lucide-react";
 import { useCallback, useEffect, useId, useState } from "react";
 
@@ -33,7 +33,7 @@ export function RetreatsCalendar2026() {
     return () => window.removeEventListener("keydown", onKey);
   }, [modalEntry, closeModal]);
 
-  const initialMessage = modalEntry ? retreatCalendarWeekBookingPrefill(modalEntry) : "";
+  const calendarBookingPrefill = modalEntry ? retreatCalendarWeekBookingPrefill(modalEntry) : null;
 
   return (
     <section
@@ -79,13 +79,13 @@ export function RetreatsCalendar2026() {
                     <div className="card-2026 card-2026--accent-gold w-full max-w-xl rounded-[1.25rem] p-6 text-left shadow-[0_18px_48px_-28px_rgba(36,28,23,0.22)] ring-1 ring-gold-logo/12 md:ml-auto md:text-right">
                       <span className="card-2026__noise" aria-hidden />
                       <p className="relative z-[1] mb-3 font-body text-[10px] font-semibold tracking-[0.28em] text-terracotta/85 uppercase">
-                        {entry.month} 2026
+                        {retreatMonthDisplayName(entry.monthKey)} 2026
                       </p>
                       <h3 className="relative z-[1] font-heading text-xl font-medium tracking-tight text-terracotta sm:text-[1.35rem]">
                         {entry.title}
                       </h3>
                       <p className="relative z-[1] mt-4 font-body text-[15px] font-light leading-[1.8] text-muted sm:text-base">
-                        {entry.description}
+                        {entry.summary}
                       </p>
                       <p className="relative z-[1] mt-5 md:flex md:justify-end">
                         <button
@@ -116,7 +116,7 @@ export function RetreatsCalendar2026() {
                           Dates
                         </p>
                         <p className="mt-0.5 font-body text-sm font-medium leading-snug text-ink sm:text-[15px]">
-                          {entry.dateRange}
+                          {retreatListingDateHeadline(entry.dateLabel)}
                         </p>
                       </div>
                     </div>
@@ -153,7 +153,8 @@ export function RetreatsCalendar2026() {
             className="relative z-[101] flex min-h-0 min-w-0 w-full flex-1 flex-col overflow-hidden bg-parchment sm:max-h-[min(92vh,900px)] sm:max-w-2xl sm:flex-none sm:overflow-y-auto sm:rounded-[1.375rem] sm:border sm:border-gold-logo/20 sm:shadow-[0_24px_64px_-24px_rgba(36,28,23,0.2)]"
           >
             <p id={dialogTitleId} className="sr-only">
-              Book {modalEntry.month} 2026 week — {modalEntry.dateRange}. WhatsApp opens with your details after you submit.
+              Book {retreatMonthDisplayName(modalEntry.monthKey)} 2026 week —{" "}
+              {retreatListingDateHeadline(modalEntry.dateLabel)}. WhatsApp opens with your details after you submit.
             </p>
 
             <div className="flex shrink-0 items-center justify-between gap-3 border-b border-border-subtle/90 bg-parchment px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:hidden">
@@ -195,23 +196,23 @@ export function RetreatsCalendar2026() {
 
               <div className="mb-6 min-w-0 rounded-xl border border-gold-logo/25 bg-gradient-to-br from-parchment/95 to-sand/80 p-4 sm:p-5">
                 <p className="font-body text-[10px] font-semibold tracking-[0.24em] text-terracotta/90 uppercase">
-                  Your week · {modalEntry.month} 2026
+                  Your week · {retreatMonthDisplayName(modalEntry.monthKey)} 2026
                 </p>
                 <p className="mt-2 flex items-center gap-2 font-heading text-lg font-medium tracking-tight text-ink">
                   <MapPin className="h-4 w-4 shrink-0 text-terracotta" strokeWidth={2} aria-hidden />
-                  {modalEntry.dateRange}
+                  {retreatListingDateHeadline(modalEntry.dateLabel)}
                 </p>
                 <h3 className="mt-3 font-heading text-base font-medium text-terracotta sm:text-[1.05rem]">
                   {modalEntry.title}
                 </h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-muted">{modalEntry.description}</p>
+                <p className="mt-2 font-body text-sm leading-relaxed text-muted">{modalEntry.summary}</p>
               </div>
 
               <div className="booking-modal-form min-w-0 rounded-xl border border-border-subtle/90 bg-surface-elevated/95 p-4 sm:p-6">
                 <BookingForm
-                  key={`${modalEntry.id}-${initialMessage.slice(0, 40)}`}
-                  initialOfferId={offers[0]!.id}
-                  initialMessage={initialMessage}
+                  key={`${modalEntry.id}-${calendarBookingPrefill!.message.slice(0, 40)}`}
+                  initialOfferId={calendarBookingPrefill!.offerId}
+                  initialMessage={calendarBookingPrefill!.message}
                   lockOffer={false}
                   onSuccessNavigate={closeModal}
                 />
