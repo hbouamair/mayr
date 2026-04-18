@@ -122,6 +122,7 @@ export function Header() {
                   alt={SITE_BRAND_NAME}
                   width={512}
                   height={512}
+                  quality={100}
                   className="h-full w-full object-contain object-left"
                   priority
                 />

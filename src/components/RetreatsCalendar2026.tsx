@@ -50,7 +50,7 @@ export function RetreatsCalendar2026() {
           <div className="flex items-center gap-5">
             <span className="lux-rule shrink-0" aria-hidden />
             <p className="font-body text-[10px] font-semibold tracking-[0.32em] text-terracotta/90 uppercase sm:text-[11px]">
-              2026 season
+              Season
             </p>
           </div>
           <h2
@@ -58,7 +58,7 @@ export function RetreatsCalendar2026() {
             className="mt-6 font-heading text-[clamp(1.65rem,3.8vw,2.35rem)] font-medium leading-[1.12] tracking-tight text-ink"
           >
             <span className="text-gradient-brand">Calendar</span>{" "}
-            <span className="text-ink">retreats 2026</span>
+            <span className="text-ink">retreats</span>
           </h2>
           <p className="mt-5 font-body text-base font-light leading-[1.75] tracking-wide text-muted sm:text-[17px]">
             {retreatCalendar2026Intro.description}

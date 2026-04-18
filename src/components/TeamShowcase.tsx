@@ -37,6 +37,7 @@ export function TeamShowcase({ members }: { members: TeamMember[] }) {
                     src={member.image.src}
                     alt={member.image.alt}
                     fill
+                    quality={100}
                     sizes="(max-width: 640px) 50vw, 13rem"
                     className="object-cover"
                     priority={i === 0}

@@ -89,9 +89,6 @@ export function HomeMarrakechExperienceSection() {
                   {intro.description}
                 </p>
               </div>
-              <p className="hidden shrink-0 font-body text-[10px] font-medium uppercase tracking-[0.35em] text-muted/70 lg:block lg:max-w-[10rem] lg:text-right lg:leading-relaxed">
-                2026 editorial
-              </p>
             </div>
 
             <div className="mt-12 grid min-w-0 grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12 lg:gap-4 xl:gap-5">

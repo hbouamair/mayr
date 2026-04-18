@@ -48,6 +48,7 @@ export function HomeHeroSlider({ children }: HomeHeroSliderProps) {
               alt=""
               fill
               priority={i === 0}
+              quality={100}
               sizes="100vw"
               className="object-cover object-center"
             />

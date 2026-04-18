@@ -67,6 +67,7 @@ export function Footer() {
                   alt=""
                   width={640}
                   height={180}
+                  quality={100}
                   className="h-full w-auto max-w-full object-contain object-left"
                 />
               </span>

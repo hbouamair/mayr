@@ -17,7 +17,7 @@ const figureBase =
 export function AboutPageGallery({ images }: AboutPageGalleryProps) {
   if (images.length === 0) return null;
 
-  const [a, b, c, wide] = images;
+  const [a, b, c, wide, ...rest] = images;
 
   if (images.length === 1) {
     return (
@@ -122,6 +122,27 @@ export function AboutPageGallery({ images }: AboutPageGalleryProps) {
           />
           <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/25 via-transparent to-ink/15" aria-hidden />
         </figure>
+      ) : null}
+
+      {rest.length > 0 ? (
+        <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
+          {rest.map((img) => (
+            <figure
+              key={img.src}
+              className={`${figureBase} relative min-h-[200px] shadow-[0_18px_48px_-32px_rgba(36,28,23,0.28)] sm:min-h-[220px]`}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                quality={100}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] motion-reduce:transition-none"
+              />
+              <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" aria-hidden />
+            </figure>
+          ))}
+        </div>
       ) : null}
     </div>
   );

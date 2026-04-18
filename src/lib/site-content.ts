@@ -31,7 +31,7 @@ export const homeMayrParagraphs: readonly string[] = [
 
 /** Home landing — retreat calendar intro */
 export const homeProgramSummary = {
-  eyebrow: "2026 season",
+  eyebrow: "Season",
   titleHighlight: "Retreat calendar",
   description:
     "Five scheduled weeks — preview two programs at a time, then open a week for details, pricing, and booking.",
@@ -109,8 +109,8 @@ export const marrakechExperienceCards: readonly MarrakechExperienceCard[] = [
 ];
 
 /**
- * About page gallery — add or reorder entries; paths are under `public/` (use `publicAssetPath`).
- * First three power the bento hero; optional fourth renders as a wide band below.
+ * About page gallery — `public/aboutUs/` (use `publicAssetPath`).
+ * First image: bento hero left; next two: stacked right; fourth: wide band; any further: grid below.
  */
 export type AboutPageGalleryImage = {
   src: string;
@@ -119,20 +119,40 @@ export type AboutPageGalleryImage = {
 
 export const aboutPageGalleryImages: readonly AboutPageGalleryImage[] = [
   {
-    src: publicAssetPath("background/Copie_de_IMG_3680.jpg"),
-    alt: "Moroccan setting and warm light at the retreat",
+    src: publicAssetPath("aboutUs/IMG_4162.jpg"),
+    alt: "Marrakech Alchemy — about us, retreat and Moroccan setting",
   },
   {
-    src: publicAssetPath("activity/c90edcc0-eae3-4488-8b44-339e07bb9f7a.JPG"),
-    alt: "Yoga and movement during a Marrakech Alchemy retreat",
+    src: publicAssetPath("aboutUs/IMG_4217.jpg"),
+    alt: "Yoga and retreat life with Marrakech Alchemy",
   },
   {
-    src: publicAssetPath("accomondation/IMG_5205.jpg"),
-    alt: "Calm retreat accommodation and interiors",
+    src: publicAssetPath("aboutUs/IMG_3674.jpg"),
+    alt: "Warm light and atmosphere — Marrakech Alchemy Yoga Retreats",
   },
   {
-    src: publicAssetPath("DSC07117.jpeg"),
-    alt: "Atmosphere and landscape around the retreat experience",
+    src: publicAssetPath("aboutUs/03e344f3-421a-4335-84b3-2607561a76a5.jpg"),
+    alt: "Moments from Marrakech Alchemy retreats in Morocco",
+  },
+  {
+    src: publicAssetPath("aboutUs/IMG_3642.jpg"),
+    alt: "Retreat experience and connection",
+  },
+  {
+    src: publicAssetPath("aboutUs/WhatsApp Image 2025-09-07 at 23.07.14.jpeg"),
+    alt: "Gatherings and practice with Marrakech Alchemy",
+  },
+  {
+    src: publicAssetPath("aboutUs/WhatsApp Image 2025-09-07 at 23.08.15 (2) (1).jpeg"),
+    alt: "Wellness and community at the retreat",
+  },
+  {
+    src: publicAssetPath("aboutUs/WhatsApp Image 2025-02-22 at 14.41.16-3.jpeg"),
+    alt: "Moroccan retreat and cultural immersion",
+  },
+  {
+    src: publicAssetPath(`aboutUs/Capture d\u2019e\u0301cran 2025-08-09 a\u0300 01.47.20.png`),
+    alt: "Marrakech Alchemy Yoga Retreats — about us imagery",
   },
 ];
 
