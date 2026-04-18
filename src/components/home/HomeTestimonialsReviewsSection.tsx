@@ -2,7 +2,7 @@ import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { SectionIntro } from "@/components/SectionIntro";
 import { TestimonialsShowcase } from "@/components/TestimonialsShowcase";
-import { GOOGLE_REVIEWS_URL } from "@/lib/site";
+import { GOOGLE_REVIEWS_URL, SITE_SECTION_KICKER } from "@/lib/site";
 import { testimonials } from "@/lib/site-content";
 
 export function HomeTestimonialsReviewsSection() {
@@ -11,8 +11,11 @@ export function HomeTestimonialsReviewsSection() {
       <div className="mx-auto min-w-0 max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <SectionIntro
           surface="plain"
-          eyebrow="Voices"
+          eyebrow={SITE_SECTION_KICKER}
           title="Testimonials & reviews"
+          titleHighlight="Testimonials & reviews"
+          titleRest=""
+          titleClassName="whitespace-nowrap"
           description="Kind words from guests — and your ratings on Google."
         />
         <div className="mt-14 lg:mt-16">

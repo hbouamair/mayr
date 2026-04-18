@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { PricingTier, RetreatPricing } from "@/lib/retreat-detail-content";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 import { BookSpotWhatsAppModal } from "@/components/retreat-detail/BookSpotWhatsAppModal";
 
 type Props = {
@@ -28,7 +29,7 @@ export function RetreatPricing2026({
       <div className="relative">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.28em] text-terracotta/90">Book your spot</p>
+            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.28em] text-terracotta/90">{SITE_SECTION_KICKER}</p>
             <h2 className="mt-2 font-heading text-xl font-medium tracking-tight text-ink sm:text-2xl">2026 rates</h2>
           </div>
           <p className="rounded-full border border-gold-logo/25 bg-parchment/90 px-3 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">

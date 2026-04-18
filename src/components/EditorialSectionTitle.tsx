@@ -18,9 +18,7 @@ const SCALE_CLASSES: Record<NonNullable<EditorialSectionTitleProps["scale"]>, st
   page: "w-full max-w-none text-[clamp(1.45rem,3.2vw,2.4rem)] leading-[1.12] sm:text-[clamp(1.55rem,3.4vw,2.55rem)]",
 };
 
-/**
- * Large two-line editorial headline (same system as Food “Moroccan / table”).
- */
+/** Large editorial headline — highlight + optional rest stay on one line */
 export function EditorialSectionTitle({
   highlight,
   rest,
@@ -37,7 +35,12 @@ export function EditorialSectionTitle({
       className={`font-heading font-medium tracking-tight ${SCALE_CLASSES[scale]} ${alignClass} ${className}`.trim()}
     >
       <span className="text-gradient-brand">{highlight}</span>
-      {rest ? <span className="block text-ink">{rest}</span> : null}
+      {rest ? (
+        <>
+          {" "}
+          <span className="text-ink">{rest}</span>
+        </>
+      ) : null}
     </Tag>
   );
 }

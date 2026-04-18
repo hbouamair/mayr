@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { offers } from "@/lib/offers";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 import { ArrowRight, Leaf } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -29,13 +31,10 @@ export function GlassOfferGrid() {
         <div className="mb-10 inline-flex items-center gap-2.5 rounded-full border border-gold-logo/20 bg-white/50 px-6 py-2.5 backdrop-blur-md">
           <Leaf className="h-3.5 w-3.5 text-terracotta" strokeWidth={1.75} />
           <span className="font-body text-[10px] font-semibold uppercase tracking-[0.26em] text-muted">
-            Curated stays
+            {SITE_SECTION_KICKER}
           </span>
         </div>
         <h2 className="font-heading text-[clamp(1.85rem,4vw,2.85rem)] font-medium leading-tight tracking-tight text-ink">
-          <span className="mb-3 block font-body text-[11px] font-medium uppercase tracking-[0.35em] text-muted">
-            Featured
-          </span>
           <span className="text-gradient-brand">Retreat offers</span>
         </h2>
         <p className="mx-auto mt-8 max-w-lg font-body text-base font-light leading-relaxed tracking-wide text-muted">
@@ -61,8 +60,18 @@ export function GlassOfferGrid() {
                 />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(166,75,42,0.2),transparent_55%)]" />
                 <div className="absolute left-4 top-4">
-                  <span className="inline-flex items-center rounded-full border border-white/60 bg-white/40 px-3 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-ink/80 backdrop-blur-md">
-                    Morocco
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/40 px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-ink/80 backdrop-blur-md">
+                    <span className="relative inline-flex h-3.5 w-[22px] shrink-0 overflow-hidden rounded-[3px] shadow-sm ring-1 ring-black/15">
+                      <Image
+                        src="https://flagcdn.com/w40/ma.png"
+                        alt=""
+                        width={22}
+                        height={14}
+                        className="object-cover"
+                        sizes="22px"
+                      />
+                    </span>
+                    <span className="sr-only">Morocco</span>
                   </span>
                 </div>
                 <div className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full border border-white/50 bg-white/35 px-3 py-1.5 backdrop-blur-md">

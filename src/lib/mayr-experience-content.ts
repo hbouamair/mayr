@@ -1,5 +1,7 @@
 /** Editorial sections for MAYR Experience (booking page) — Marrakech Alchemy journey */
 
+import { SITE_SECTION_KICKER } from "./site";
+
 export type MayrExperienceSection = {
   id: string;
   /** Short label above title */
@@ -12,7 +14,7 @@ export type MayrExperienceSection = {
 };
 
 export const mayrExperienceIntro = {
-  eyebrow: "MAYR",
+  eyebrow: SITE_SECTION_KICKER,
   title: "Marrakech Alchemy Experience",
   /** Two-line hero: gradient first line, ink second */
   titleHighlight: "Marrakech Alchemy",
@@ -46,7 +48,7 @@ export const mayrExperienceSections: readonly MayrExperienceSection[] = [
   },
   {
     id: "culinary",
-    kicker: "Taste",
+    kicker: "Eat",
     title: "Culinary experience",
     paragraphs: [
       "Food is an essential part of the journey, an invitation to explore Morocco through its rich flavors, traditions, and regional diversity.",
@@ -58,7 +60,7 @@ export const mayrExperienceSections: readonly MayrExperienceSection[] = [
   },
   {
     id: "yoga-sound",
-    kicker: "Practice",
+    kicker: "Move",
     title: "Yoga & sound journeys",
     paragraphs: [
       "Yoga and sound healing are at the heart of every MAYR experience, woven into each day as a pathway to reconnect, restore, and realign.",
@@ -68,7 +70,7 @@ export const mayrExperienceSections: readonly MayrExperienceSection[] = [
   },
   {
     id: "wellness",
-    kicker: "Restore",
+    kicker: "Rest",
     title: "Wellness and relaxation experiences",
     paragraphs: [
       "Beyond the structured practices, our retreats are an invitation to truly slow down and reconnect with a more natural pace of living. Each location is chosen not only for its beauty but for its ability to offer space, calm, and restoration.",
@@ -77,7 +79,7 @@ export const mayrExperienceSections: readonly MayrExperienceSection[] = [
   },
   {
     id: "workshops",
-    kicker: "Gather",
+    kicker: "Connect",
     title: "Workshops & women circles",
     paragraphs: [
       "At the heart of our retreats lies a strong emphasis on connection, both with oneself and with others. Our workshops and women circles are designed as safe, nurturing spaces where guests can explore, express, and share in meaningful ways.",

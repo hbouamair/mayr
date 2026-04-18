@@ -8,7 +8,15 @@ import {
   IconTikTokGlyph,
   IconWhatsAppGlyph,
 } from "@/components/icons/SocialGlyphs";
-import { FACEBOOK_URL, INSTAGRAM_URL, SITE_EMAIL, SITE_PHONE_DISPLAY, TIKTOK_URL, WHATSAPP_LINK } from "@/lib/site";
+import {
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  SITE_EMAIL,
+  SITE_PHONE_DISPLAY,
+  SITE_SECTION_KICKER,
+  TIKTOK_URL,
+  WHATSAPP_LINK,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,7 +29,7 @@ export default function ContactPage() {
       <SectionIntro
         surface="contact"
         titleAs="h1"
-        eyebrow="Hello"
+        eyebrow={SITE_SECTION_KICKER}
         title="Contact us"
         description="Send a message with the form, or reach us through the channels beside it — we read everything with care."
       />

@@ -9,6 +9,8 @@ const COUNTRY_NAME: Record<string, string> = {
   tr: "Turkey",
   us: "United States",
   ca: "Canada",
+  ma: "Morocco",
+  mx: "Mexico",
 };
 
 const LAYOUT = [

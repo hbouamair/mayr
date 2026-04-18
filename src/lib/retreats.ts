@@ -160,15 +160,6 @@ export const retreatMonths = [
   { key: "sep", label: "September" },
 ] as const;
 
-export const retreatFocuses = [
-  "all",
-  "Empower · Coaching",
-  "Sacred Feminine",
-  "Summer · Vinyasa",
-  "Autumn · Yoga",
-  "YTT · Vinyasa 50h",
-] as const;
-
 /** Place filter — matches `placeKey` on each listing */
 export const retreatPlaceOptions = [
   { key: "all", label: "All places" },

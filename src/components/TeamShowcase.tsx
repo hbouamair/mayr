@@ -3,6 +3,14 @@ import type { TeamMember } from "@/lib/site-content";
 
 const OFFSETS = ["", "lg:translate-y-10"] as const;
 
+/** Alt text for flag images (ISO alpha-2 → English name) */
+const FLAG_COUNTRY_NAME: Record<string, string> = {
+  ma: "Morocco",
+  mx: "Mexico",
+  ca: "Canada",
+  us: "United States",
+};
+
 function InstagramGlyph({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -31,7 +39,7 @@ export function TeamShowcase({ members }: { members: TeamMember[] }) {
                     fill
                     sizes="(max-width: 640px) 50vw, 13rem"
                     className="object-cover"
-                    priority={i === 1}
+                    priority={i === 0}
                   />
                 ) : (
                   <span className="font-heading text-4xl font-medium text-ink/25" aria-hidden>
@@ -41,7 +49,21 @@ export function TeamShowcase({ members }: { members: TeamMember[] }) {
               </div>
             </div>
             <div className="relative z-[1] mt-8 text-center sm:mt-9">
-              <p className="font-body text-[10px] font-semibold tracking-[0.28em] text-terracotta/85 uppercase">{member.role}</p>
+              <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                {member.flagCountryCode ? (
+                  <span className="relative inline-flex h-[15px] w-[22px] shrink-0 overflow-hidden rounded-[3px] shadow-sm ring-1 ring-black/12">
+                    <Image
+                      src={`https://flagcdn.com/w40/${member.flagCountryCode}.png`}
+                      alt={`${FLAG_COUNTRY_NAME[member.flagCountryCode] ?? member.flagCountryCode} flag`}
+                      width={22}
+                      height={15}
+                      className="object-cover"
+                      sizes="22px"
+                    />
+                  </span>
+                ) : null}
+                <p className="font-body text-[10px] font-semibold tracking-[0.28em] text-terracotta/85 uppercase">{member.role}</p>
+              </div>
               <h2 className="mt-2 font-heading text-xl font-medium tracking-tight text-ink sm:text-2xl">{member.name}</h2>
               <div className="mx-auto mt-4 max-w-prose text-left">
                 {member.bio

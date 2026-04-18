@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionIntro } from "@/components/SectionIntro";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Yoga Studio",
@@ -14,7 +15,7 @@ export default function YogaStudioPage() {
       <SectionIntro
         surface="contact"
         titleAs="h1"
-        eyebrow="Space"
+        eyebrow={SITE_SECTION_KICKER}
         title="Our Yoga Studio"
         description="A calm place to move, breathe, and gather — woven into the rhythm of Marrakech Alchemy. Details below are a starting point; we’re happy to tailor copy and photography to match your studio story."
       />

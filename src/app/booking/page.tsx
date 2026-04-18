@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GoogleReviewsCta } from "@/components/GoogleReviewsCta";
 import { MayrExperienceSections } from "@/components/mayr/MayrExperienceSections";
 import { SectionIntro } from "@/components/SectionIntro";
 import { mayrExperienceIntro, mayrExperienceSections } from "@/lib/mayr-experience-content";
@@ -29,10 +28,6 @@ export default function BookingPage() {
 
       <div className="mx-auto mt-16 max-w-6xl sm:mt-20 lg:mt-24">
         <MayrExperienceSections sections={mayrExperienceSections} />
-      </div>
-
-      <div className="mx-auto mt-20 max-w-6xl sm:mt-24 lg:mt-28">
-        <GoogleReviewsCta />
       </div>
     </div>
   );

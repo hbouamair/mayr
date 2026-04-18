@@ -88,6 +88,18 @@ body {
   font-feature-settings: "kern" 1, "liga" 1;
 }
 
+/* Keep main content titles on one line; scroll horizontally if the viewport is too narrow */
+#main-content :is(h1, h2, h3) {
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  scrollbar-width: none;
+}
+
+#main-content :is(h1, h2, h3)::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1344,3 +1356,54 @@ select.input-brand option {
     transform: none;
   }
 }
+
+/* Home — retreat calendar carousel */
+@keyframes home-mayr-orb-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-10px, 8px) scale(1.04);
+  }
+}
+@keyframes home-calendar-icon {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@keyframes home-carousel-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.home-calendar-float-orb-a {
+  animation: home-mayr-orb-float 14s ease-in-out infinite;
+}
+.home-calendar-float-orb-b {
+  animation: home-mayr-orb-float 18s ease-in-out infinite reverse;
+}
+.home-calendar-icon-pulse {
+  animation: home-calendar-icon 5s ease-in-out infinite;
+}
+.home-carousel-card-enter {
+  animation: home-carousel-card-enter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-calendar-float-orb-a,
+  .home-calendar-float-orb-b,
+  .home-calendar-icon-pulse,
+  .home-carousel-card-enter {
+    animation: none;
+  }
+}
+

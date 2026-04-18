@@ -56,7 +56,7 @@ export default async function RetreatDetailPage({ params }: Props) {
   const galleryUrls = detail?.galleryImageUrls ?? [];
 
   return (
-    <div className="mx-auto min-w-0 max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
+    <div className="mx-auto min-w-0 max-w-7xl px-4 py-10 sm:px-6 sm:py-16">
       <Link
         href="/retreat-program#browse-retreats"
         className="font-body text-[10px] font-semibold uppercase tracking-[0.22em] text-terracotta underline decoration-gold-logo/30 underline-offset-[6px] transition-colors hover:text-terracotta-glow"
@@ -64,21 +64,21 @@ export default async function RetreatDetailPage({ params }: Props) {
         ← All programs
       </Link>
 
-      <div className="mx-auto mt-10 max-w-lg">
-        <p className="text-center font-body text-[10px] font-semibold uppercase tracking-[0.32em] text-muted">Photo d’affiche</p>
-        <div className="relative mt-4 aspect-[3/4] w-full overflow-hidden rounded-[1.35rem] border border-border-subtle/90 bg-sand-deep/20 shadow-[0_24px_56px_-32px_rgba(36,28,23,0.35)] ring-1 ring-white/40">
+      <div className="mx-auto mt-10 max-w-sm sm:max-w-md lg:max-w-lg">
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[1.35rem] border border-border-subtle/90 bg-sand-deep/20 shadow-[0_24px_56px_-32px_rgba(36,28,23,0.35)] ring-1 ring-white/40">
           <Image
             src={r.coverImage}
             alt={`Affiche — ${r.title}`}
             fill
             priority
+            quality={100}
             className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 32rem"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 28rem, 32rem"
           />
         </div>
       </div>
 
-      <header className="mx-auto mt-10 max-w-3xl text-center">
+      <header className="mx-auto mt-10 max-w-4xl text-center lg:max-w-5xl">
         <div className="flex flex-wrap items-center justify-center gap-2">
           <span className="rounded-full border border-border-subtle bg-parchment/90 px-3 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
             {r.language}
@@ -108,7 +108,7 @@ export default async function RetreatDetailPage({ params }: Props) {
         <p className="mt-1 font-body text-[11px] uppercase tracking-[0.2em] text-gold-logo/95">{r.focus}</p>
       </header>
 
-      <div className="mx-auto mt-12 max-w-3xl">
+      <div className="mx-auto mt-12 max-w-4xl lg:max-w-5xl">
         <div className="rounded-2xl border border-white/45 bg-white/35 p-6 backdrop-blur-xl sm:p-8">
           <p className="font-body text-base font-light leading-relaxed tracking-wide text-muted">{lead}</p>
           {offer && !detail?.pricing ? (
@@ -152,7 +152,7 @@ export default async function RetreatDetailPage({ params }: Props) {
 
         <div className="mt-16">
           <h2 className="font-heading text-xl font-medium tracking-tight text-ink sm:text-2xl">Gallery</h2>
-          <p className="mt-2 max-w-2xl font-body text-sm text-muted">We&apos;ll publish your picture links in this grid when you share them.</p>
+          <p className="mt-2 max-w-3xl font-body text-sm text-muted">We&apos;ll publish your picture links in this grid when you share them.</p>
           <div className="mt-6">
             <RetreatDetailGallery title={r.title} imageUrls={galleryUrls} />
           </div>

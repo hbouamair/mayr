@@ -33,7 +33,7 @@ export type RetreatDetailExtended = {
   headline?: string;
   /** Always visible intro */
   lead: string;
-  /** Shown inside “More” */
+  /** FAQ blocks: first two show on the page; rest are behind “See more” on every retreat detail. */
   moreSections: DetailSection[];
   pricing?: RetreatPricing;
   registrationUrl: string | null;

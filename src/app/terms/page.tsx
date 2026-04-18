@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionIntro } from "@/components/SectionIntro";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -8,13 +9,14 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <article className="mx-auto min-w-0 max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+    <article className="mx-auto min-w-0 max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
       <SectionIntro
         surface="contact"
         titleAs="h1"
-        eyebrow="Hello"
+        eyebrow={SITE_SECTION_KICKER}
         title="Terms & Conditions"
         description="By booking a retreat with Marrakech Alchemy Yoga Retreats, you agree to the following:"
+        descriptionClassName="max-w-none"
       />
 
       <section className="mt-14">

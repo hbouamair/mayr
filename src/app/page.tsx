@@ -2,14 +2,11 @@ import { Calendar } from "lucide-react";
 import Link from "next/link";
 import { EditorialSectionTitle, splitEditorialTitle } from "@/components/EditorialSectionTitle";
 import { HomeHeroSlider } from "@/components/HomeHeroSlider";
-import { HomeMayrSection } from "@/components/home/HomeMayrSection";
+import { HomeMarrakechExperienceSection } from "@/components/home/HomeMarrakechExperienceSection";
 import { HomeProgramsCalendarSection } from "@/components/home/HomeProgramsCalendarSection";
 import { HomeTestimonialsReviewsSection } from "@/components/home/HomeTestimonialsReviewsSection";
-import {
-  heroSubtagline,
-  heroTagline,
-  homeIntro,
-} from "@/lib/site-content";
+import { SITE_SECTION_KICKER } from "@/lib/site";
+import { heroSubtagline, heroTagline, homeIntro } from "@/lib/site-content";
 
 export default function Home() {
   const contactHeadline = splitEditorialTitle("Contact us");
@@ -24,7 +21,7 @@ export default function Home() {
               {heroTagline}
             </p>
           </div>
-          <h1 className="mt-8 max-w-4xl font-heading text-[clamp(2.2rem,6.2vw,4.25rem)] font-medium leading-[1.05] tracking-tight text-balance text-white">
+          <h1 className="mt-8 max-w-4xl font-heading text-[clamp(2.2rem,6.2vw,4.25rem)] font-medium leading-[1.05] tracking-tight text-white">
             Marrakech Alchemy Yoga Retreats
           </h1>
           <p className="mt-4 max-w-2xl font-body text-lg font-light tracking-wide text-white/88 sm:text-xl">
@@ -45,13 +42,13 @@ export default function Home() {
               href="/retreat-program#browse-retreats"
               className="inline-flex min-h-[3.25rem] items-center justify-center rounded-lg border border-white/70 bg-white/5 px-10 py-3.5 font-body text-[10px] font-semibold tracking-[0.24em] text-white uppercase backdrop-blur-sm transition hover:border-white hover:bg-white/10"
             >
-              Program calendar
+              Retreat calendar
             </Link>
           </div>
         </div>
       </HomeHeroSlider>
 
-      <HomeMayrSection />
+      <HomeMarrakechExperienceSection />
 
       <HomeProgramsCalendarSection />
 
@@ -62,7 +59,7 @@ export default function Home() {
           <div className="flex min-w-0 items-center gap-5">
             <span className="lux-rule shrink-0" aria-hidden />
             <p className="font-body text-[10px] font-semibold tracking-[0.32em] text-terracotta/90 uppercase sm:text-[11px]">
-              Reach
+              {SITE_SECTION_KICKER}
             </p>
           </div>
           <div className="mt-8">

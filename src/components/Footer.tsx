@@ -7,7 +7,7 @@ import {
   INSTAGRAM_URL,
   SITE_BRAND_NAME,
   SITE_EMAIL,
-  SITE_LOGO_MARK,
+  SITE_LOGO_FOOTER,
   TIKTOK_URL,
   WHATSAPP_LINK,
 } from "@/lib/site";
@@ -62,13 +62,13 @@ export function Footer() {
               href="/"
               className="footer-ms-brand-lockup group/footer-brand inline-flex max-w-full flex-wrap items-center gap-3 transition-opacity hover:opacity-90"
             >
-              <span className="relative flex h-[5.25rem] w-[5.25rem] shrink-0 items-center justify-center sm:h-24 sm:w-24 md:h-[6.75rem] md:w-[6.75rem]">
+              <span className="relative flex h-[5.75rem] w-auto max-w-[min(100%,20rem)] shrink-0 items-center justify-center sm:h-[6.75rem] sm:max-w-[23rem] md:h-[7.75rem] md:max-w-[26rem]">
                 <Image
-                  src={SITE_LOGO_MARK}
+                  src={SITE_LOGO_FOOTER}
                   alt=""
-                  width={384}
-                  height={384}
-                  className="h-full w-full object-contain object-left"
+                  width={640}
+                  height={180}
+                  className="h-full w-auto max-w-full object-contain object-left"
                 />
               </span>
               <span className="footer-ms-brand-name font-heading text-lg font-medium leading-snug tracking-tight text-ink sm:text-xl">
@@ -76,8 +76,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="footer-ms-brand-tagline mt-3 max-w-sm">
-              Immersive yoga and restoration in Morocco — Atlas calm, Medina soul, and the warmth of Moroccan
-              hospitality.
+              An immersive retreat experience blending yoga, sound healing, curated wellness, and authentic Moroccan
+              culture in exclusive locations designed for deep rest, connection, and renewal.
             </p>
             <Link
               href="/booking"
@@ -154,7 +154,7 @@ export function Footer() {
             © {new Date().getFullYear()} Marrakech Alchemy Yoga Retreats. All rights reserved.
           </p>
           <p className="font-body text-[10px] font-medium uppercase tracking-[0.2em] text-muted/90">
-            Marrakech · Atlas · Medina
+            Awaken • Connect • Restore
           </p>
         </div>
       </div>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
-import { SITE_BRAND_NAME, SITE_LOGO_MARK } from "@/lib/site";
+import { SITE_BRAND_NAME, SITE_LOGO_MARK, SITE_SECTION_KICKER } from "@/lib/site";
 
 const NAV = [
   { href: "/about", label: "About us" },
@@ -108,10 +108,10 @@ export function Header() {
                 : "glass-nav-merged"
           }`}
         >
-          <div className="relative flex min-h-[3.55rem] items-center justify-end gap-2 py-2.5 pl-[5.35rem] pr-2 sm:min-h-[3.7rem] sm:pl-[6rem] sm:pr-4 sm:py-3 md:pl-[6.5rem] lg:min-h-[3.85rem] lg:justify-between lg:pl-[7.25rem] lg:pr-5 xl:min-h-[4rem] xl:pl-[7.75rem]">
+          <div className="relative flex min-h-[3.75rem] items-center justify-end gap-2 py-2.5 pl-[6.35rem] pr-2 sm:min-h-[4rem] sm:pl-[7.1rem] sm:pr-4 sm:py-3 md:pl-[7.75rem] lg:min-h-[4.15rem] lg:justify-between lg:pl-[8.6rem] lg:pr-5 xl:min-h-[4.35rem] xl:pl-[9.35rem]">
             <Link
               href="/"
-              className={`group/logo absolute left-2 top-1/2 z-10 w-[4.65rem] -translate-y-1/2 shrink-0 transition-opacity duration-300 hover:opacity-90 sm:left-2.5 sm:w-[5.25rem] md:left-3 md:w-[5.75rem] lg:left-4 lg:w-[6.25rem] xl:w-[6.75rem] ${
+              className={`group/logo absolute left-2 top-1/2 z-10 w-[5.6rem] -translate-y-1/2 shrink-0 transition-opacity duration-300 hover:opacity-90 sm:left-2.5 sm:w-[6.35rem] md:left-3 md:w-[6.9rem] lg:left-4 lg:w-[7.5rem] xl:w-[8.25rem] ${
                 navOnHero ? "drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]" : ""
               }`}
               onClick={() => setMobileOpen(false)}
@@ -210,7 +210,7 @@ export function Header() {
                 id={`${menuId}-title`}
                 className="font-body text-[10px] font-semibold uppercase tracking-[0.34em] text-terracotta/85 sm:text-[11px]"
               >
-                Navigate
+                {SITE_SECTION_KICKER}
               </p>
               <p className="mt-1 font-heading text-[clamp(1.25rem,5vw,1.65rem)] font-medium leading-[1.08] tracking-tight text-ink">
                 <span className="text-gradient-brand">Marrakech</span>

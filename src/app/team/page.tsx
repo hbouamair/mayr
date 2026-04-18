@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { SectionIntro } from "@/components/SectionIntro";
 import { TeamShowcase } from "@/components/TeamShowcase";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 import { teamMembers } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-  title: "Our Team",
+  title: "Our Fellows",
   description:
-    "Monica Oana and Souha Majidi — yoga, sound healing, and space-holding for Marrakech Alchemy Yoga Retreats.",
+    "Souha, Daniela, Kiana, and Naia — yoga, sound, cacao, Pilates, and yoga teacher trainings for Marrakech Alchemy Yoga Retreats.",
 };
 
 export default function TeamPage() {
@@ -15,9 +16,21 @@ export default function TeamPage() {
       <SectionIntro
         surface="contact"
         titleAs="h1"
-        eyebrow="Hello"
-        title="Our team"
-        description="Meet Monica and Souha — yoga, sound, and heartfelt space-holding for your retreat in Morocco."
+        eyebrow={SITE_SECTION_KICKER}
+        title="Our fellows"
+        descriptionClassName="max-w-4xl lg:max-w-5xl"
+        description={
+          <>
+            <p>
+              Our retreat is guided by a soulful team of women, each bringing a unique cultural tapestry, embodied
+              wisdom, and heart-centered presence to the experience.
+            </p>
+            <p className="mt-4">
+              Together, they create a safe, nurturing, and transformative space where tradition meets intuition, and
+              inner journeys are supported with care and depth.
+            </p>
+          </>
+        }
       />
 
       <div className="relative mt-16 lg:mt-20">

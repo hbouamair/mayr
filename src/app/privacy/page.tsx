@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionIntro } from "@/components/SectionIntro";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -10,13 +11,14 @@ const EMAIL = "Marrakech.alchemy@gmail.com";
 
 export default function PrivacyPage() {
   return (
-    <article className="mx-auto min-w-0 max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+    <article className="mx-auto min-w-0 max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
       <SectionIntro
         surface="contact"
         titleAs="h1"
-        eyebrow="Hello"
+        eyebrow={SITE_SECTION_KICKER}
         title="Privacy Policy"
         description="At Marrakech Alchemy Yoga Retreats, your privacy and trust are important to us. This policy outlines how we collect, use, and protect your personal information when you visit our website, communicate with us, or book a retreat."
+        descriptionClassName="max-w-none"
       />
 
       <section className="mt-14">

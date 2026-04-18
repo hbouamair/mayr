@@ -57,13 +57,13 @@ export function SiteFloatingDock() {
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-fab group pointer-events-auto flex min-h-12 max-w-[min(100vw-2rem,20rem)] items-center justify-center gap-0 rounded-full border border-white/25 bg-gradient-to-r from-terracotta-glow to-terracotta-deep text-white shadow-[0_10px_36px_-8px_rgba(166,75,42,0.55),0_2px_0_rgba(255,255,255,0.12)_inset] ring-1 ring-white/15 transition-[transform,box-shadow,filter] duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_44px_-10px_rgba(166,75,42,0.6)] hover:brightness-[1.03] active:translate-y-0 active:brightness-[0.98] max-[380px]:h-12 max-[380px]:w-12 max-[380px]:p-0 sm:min-h-0 sm:justify-start sm:gap-3 sm:rounded-2xl sm:py-3.5 sm:pl-3.5 sm:pr-5"
-        aria-label={`Chat on WhatsApp — ${SITE_BRAND_NAME}`}
+        aria-label={`Chat with us on WhatsApp — ${SITE_BRAND_NAME}`}
       >
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/15 text-white transition-colors group-hover:bg-white/22 sm:h-10 sm:w-10 sm:rounded-full">
           <IconWhatsAppGlyph className="h-[1.35rem] w-[1.35rem] sm:h-6 sm:w-6" />
         </span>
         <span className="hidden min-w-0 pr-1 font-body text-[11px] font-semibold leading-tight tracking-[0.12em] uppercase sm:inline sm:pr-0.5 sm:text-xs sm:tracking-[0.14em]">
-          Book your retreat
+          Chat with us
         </span>
       </a>
     </div>

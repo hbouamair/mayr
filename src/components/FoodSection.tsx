@@ -1,4 +1,5 @@
 import { EditorialSectionTitle } from "@/components/EditorialSectionTitle";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 import { FoodGalleryCarousel } from "@/components/FoodGalleryCarousel";
 import {
   foodGalleryImages,
@@ -30,7 +31,7 @@ export function FoodSection() {
             <div className="flex items-center gap-5">
               <span className="lux-rule shrink-0" aria-hidden />
               <p className="font-body text-[10px] font-semibold tracking-[0.32em] text-terracotta/90 uppercase sm:text-[11px]">
-                Dining
+                {SITE_SECTION_KICKER}
               </p>
             </div>
             <div className="mt-8">

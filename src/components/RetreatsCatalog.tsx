@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
-  retreatFocuses,
   retreatLanguages,
   retreatListings,
   retreatMonths,
@@ -14,6 +13,7 @@ import {
   type RetreatListing,
   type RetreatStatus,
 } from "@/lib/retreats";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 
 function statusLabel(s: RetreatStatus): string {
   switch (s) {
@@ -48,7 +48,6 @@ export function RetreatsCatalog() {
   const [language, setLanguage] = useState<string>("all");
   const [place, setPlace] = useState<string>("all");
   const [month, setMonth] = useState<string>("all");
-  const [focus, setFocus] = useState<string>("all");
   const [status, setStatus] = useState<string>("all");
 
   const filtered = useMemo(() => {
@@ -56,11 +55,10 @@ export function RetreatsCatalog() {
       if (language !== "all" && r.language !== language) return false;
       if (place !== "all" && r.placeKey !== place) return false;
       if (month !== "all" && r.monthKey !== month) return false;
-      if (focus !== "all" && r.focus !== focus) return false;
       if (status !== "all" && r.status !== status) return false;
       return true;
     });
-  }, [language, place, month, focus, status]);
+  }, [language, place, month, status]);
 
   return (
     <div className="relative min-w-0 px-4 pb-24 pt-8 sm:px-6 lg:pb-32">
@@ -71,7 +69,7 @@ export function RetreatsCatalog() {
             <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="font-body text-[10px] font-semibold uppercase tracking-[0.26em] text-terracotta/90">
-                  Refine
+                  {SITE_SECTION_KICKER}
                 </p>
                 <p className="font-heading text-lg font-medium text-ink">Find your week</p>
               </div>
@@ -79,7 +77,7 @@ export function RetreatsCatalog() {
                 {filtered.length} {filtered.length === 1 ? "retreat" : "retreats"}
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               <label className="flex flex-col gap-1">
                 <span className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
                   Language
@@ -108,16 +106,6 @@ export function RetreatsCatalog() {
                   {retreatMonths.map((m) => (
                     <option key={m.key} value={m.key}>
                       {m.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="flex flex-col gap-1">
-                <span className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">Focus</span>
-                <select value={focus} onChange={(e) => setFocus(e.target.value)} className={selectClass}>
-                  {retreatFocuses.map((f) => (
-                    <option key={f} value={f}>
-                      {f === "all" ? "All focuses" : f}
                     </option>
                   ))}
                 </select>

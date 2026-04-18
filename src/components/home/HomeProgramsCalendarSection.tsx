@@ -1,81 +1,73 @@
-import { ArrowUpRight, CalendarDays, ChevronRight } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, CalendarDays } from "lucide-react";
 import Link from "next/link";
+import { EditorialSectionTitle } from "@/components/EditorialSectionTitle";
+import { HomeRetreatCalendarCarousel } from "@/components/home/HomeRetreatCalendarCarousel";
 import { homeProgramSummary } from "@/lib/site-content";
 import { retreatListings } from "@/lib/retreats";
 
 export function HomeProgramsCalendarSection() {
   return (
-    <section className="border-t border-border-subtle bg-parchment/40 bg-noise-soft" aria-labelledby="home-programs-heading">
-      <div className="mx-auto min-w-0 max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
-        <header className="mx-auto max-w-2xl text-center">
-          <div className="flex items-center justify-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold-logo/12 text-terracotta ring-1 ring-gold-logo/20">
-              <CalendarDays className="h-4 w-4" strokeWidth={1.75} aria-hidden />
-            </span>
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.32em] text-terracotta/90">{homeProgramSummary.eyebrow}</p>
-          </div>
-          <h2
-            id="home-programs-heading"
-            className="mt-5 font-heading text-[clamp(1.5rem,3.2vw,2.1rem)] font-medium leading-tight tracking-tight text-ink"
-          >
-            <span className="text-gradient-brand">{homeProgramSummary.title}</span>
-          </h2>
-          <p className="mt-4 font-body text-sm font-light leading-relaxed text-muted sm:text-[15px]">{homeProgramSummary.description}</p>
-        </header>
+    <section
+      className="border-t border-border-subtle bg-gradient-to-b from-parchment/50 via-sand/15 to-parchment/45"
+      aria-labelledby="home-programs-heading"
+    >
+      <div className="mx-auto min-w-0 max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:py-28">
+        <div className="relative overflow-hidden rounded-[1.5rem] border border-white/55 bg-gradient-to-br from-surface-elevated/98 via-parchment/95 to-sand/30 p-8 shadow-[0_28px_72px_-44px_rgba(36,28,23,0.22)] ring-1 ring-gold-logo/12 sm:p-10 md:p-12 lg:p-14">
+          <span className="card-2026__noise pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden />
+          <div
+            className="home-calendar-float-orb-a pointer-events-none absolute -right-24 top-0 h-56 w-56 rounded-full bg-gradient-to-bl from-gold-logo/14 to-transparent blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="home-calendar-float-orb-b pointer-events-none absolute -left-20 bottom-0 h-48 w-48 rounded-full bg-gradient-to-tr from-terracotta/12 to-transparent blur-3xl"
+            aria-hidden
+          />
 
-        <ul
-          className="mt-12 grid list-none grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5 xl:gap-5"
-          role="list"
-        >
-          {retreatListings.map((r) => (
-            <li key={r.id} className="min-w-0">
-              <Link
-                href={`/rooms/${r.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-[1.15rem] border border-border-subtle/90 bg-gradient-to-b from-surface-elevated to-parchment/80 shadow-sm ring-1 ring-gold-logo/8 transition-[transform,box-shadow,border-color,ring-color] duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-logo/35 hover:shadow-[0_22px_48px_-28px_rgba(36,28,23,0.2)] hover:ring-gold-logo/18 motion-safe:hover:-translate-y-1"
-              >
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-sand-deep/25">
-                  <Image
-                    src={r.coverImage}
-                    alt={r.title}
-                    fill
-                    className="object-cover transition-transform duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover:scale-[1.05]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+          <div className="relative z-[1] mx-auto max-w-6xl">
+            <div className="relative z-20">
+              <div className="flex flex-wrap items-start gap-5 sm:items-center sm:gap-6">
+                <span className="home-calendar-icon-pulse flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-terracotta/10 text-terracotta ring-1 ring-terracotta/15 sm:h-14 sm:w-14">
+                  <CalendarDays className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.75} aria-hidden />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="font-body text-[10px] font-semibold uppercase tracking-[0.32em] text-terracotta/90">
+                    {homeProgramSummary.eyebrow}
+                  </p>
+                  <EditorialSectionTitle
+                    id="home-programs-heading"
+                    as="h2"
+                    scale="page"
+                    align="left"
+                    highlight={homeProgramSummary.titleHighlight}
+                    className="mt-2 max-w-[22rem] sm:max-w-none"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent opacity-90 transition-opacity duration-[400ms] ease-out group-hover:opacity-100" />
-                  <span className="absolute bottom-3 left-3 right-3 font-body text-[9px] font-semibold uppercase tracking-[0.14em] text-white/95 line-clamp-2 drop-shadow-sm transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover:-translate-y-0.5">
-                    {r.focus}
-                  </span>
                 </div>
-                <div className="flex flex-1 flex-col p-4">
-                  <h3 className="font-heading text-[0.95rem] font-medium leading-snug tracking-tight text-ink line-clamp-2 transition-colors duration-300 group-hover:text-terracotta/95 sm:text-[1.02rem]">
-                    {r.title}
-                  </h3>
-                  <p className="mt-2 font-body text-[11px] tabular-nums leading-snug text-muted line-clamp-2">{r.dateLabel}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-terracotta">
-                    Details
-                    <ChevronRight
-                      className="h-3 w-3 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover:translate-x-1"
-                      aria-hidden
-                    />
-                  </span>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+              </div>
 
-        <div className="mt-12 flex justify-center sm:mt-14">
-          <Link
-            href={homeProgramSummary.href}
-            className="btn-cta-primary group inline-flex min-h-[2.85rem] items-center justify-center gap-2 rounded-xl px-8 py-3 font-body text-[10px] font-semibold tracking-[0.2em] text-white uppercase"
-          >
-            {homeProgramSummary.cta}
-            <ArrowUpRight
-              className="h-3.5 w-3.5 opacity-90 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              aria-hidden
-            />
-          </Link>
+              <p className="mt-8 max-w-2xl font-body text-[17px] font-light leading-[1.85] text-muted md:text-[18px]">
+                {homeProgramSummary.description}
+              </p>
+            </div>
+
+            <div className="relative z-10 mt-12 min-w-0 sm:mt-14">
+              <div className="-mx-4 rounded-none border-y border-gold-logo/10 bg-gradient-to-b from-parchment/40 via-white/30 to-transparent py-1 sm:mx-0 sm:rounded-2xl sm:border sm:shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] md:px-2 md:py-3 md:ring-1 md:ring-gold-logo/10">
+                <HomeRetreatCalendarCarousel listings={retreatListings} />
+              </div>
+            </div>
+
+            <div className="mt-10 border-t border-border-subtle/80 pt-8 md:mt-12 md:pt-10">
+              <Link
+                href={homeProgramSummary.href}
+                className="btn-cta-primary group inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl px-8 py-3.5 font-body text-[10px] font-semibold tracking-[0.2em] text-white uppercase"
+              >
+                {homeProgramSummary.cta}
+                <ArrowUpRight
+                  className="h-3.5 w-3.5 opacity-90 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden
+                />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useId, useState } from "react";
+import { SITE_SECTION_KICKER } from "@/lib/site";
 
 type Item = { src: string; alt: string };
 
@@ -201,7 +202,7 @@ export function FoodGalleryCarousel({ items, variant = "default" }: FoodGalleryC
             </div>
           </div>
           <p className="mt-3 font-body text-[10px] font-semibold tracking-[0.28em] text-muted uppercase sm:text-[11px]">
-            Visual story
+            {SITE_SECTION_KICKER}
           </p>
         </div>
       ) : (

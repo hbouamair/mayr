@@ -27,6 +27,8 @@ type SectionIntroProps = {
   titleScale?: "hero" | "page";
   /** Appended to description wrapper (e.g. wider max-width) */
   descriptionClassName?: string;
+  /** Passed to EditorialSectionTitle (e.g. whitespace-nowrap for a single-line headline) */
+  titleClassName?: string;
 };
 
 export function SectionIntro({
@@ -40,6 +42,7 @@ export function SectionIntro({
   surface = "card",
   titleScale = "hero",
   descriptionClassName = "",
+  titleClassName = "",
 }: SectionIntroProps) {
   const isCenter = align === "center";
   const auto = splitEditorialTitle(title);
@@ -82,6 +85,7 @@ export function SectionIntro({
         rest={rest}
         align={align}
         scale={titleScale}
+        className={titleClassName}
       />
     </div>
   );

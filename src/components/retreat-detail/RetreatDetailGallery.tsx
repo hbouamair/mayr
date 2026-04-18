@@ -1,5 +1,7 @@
 "use client";
 
+import { SITE_SECTION_KICKER } from "@/lib/site";
+
 type Props = {
   title: string;
   imageUrls: readonly string[];
@@ -9,7 +11,7 @@ export function RetreatDetailGallery({ title, imageUrls }: Props) {
   if (imageUrls.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-gold-logo/35 bg-sand/40 p-10 text-center">
-        <p className="font-body text-[10px] font-semibold uppercase tracking-[0.26em] text-muted">Galerie photos</p>
+        <p className="font-body text-[10px] font-semibold uppercase tracking-[0.26em] text-muted">{SITE_SECTION_KICKER}</p>
         <p className="mt-3 font-body text-sm text-muted">Picture links coming soon — we&apos;ll add them here.</p>
       </div>
     );

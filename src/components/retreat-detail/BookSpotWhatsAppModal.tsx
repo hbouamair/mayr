@@ -162,23 +162,6 @@ export function BookSpotWhatsAppModal({
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="rounded-xl border border-gold-logo/25 bg-surface-elevated/90 p-4 sm:p-5">
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">Your rate (automatic)</p>
-              <p className="mt-2 font-body text-sm leading-relaxed text-ink">
-                {useEarlyBird ? (
-                  <>
-                    <strong className="font-medium text-terracotta">Early bird</strong> applies because you are booking
-                    more than {EARLY_BIRD_MIN_DAYS_BEFORE_START} days before the first day of the retreat.
-                  </>
-                ) : (
-                  <>
-                    <strong className="font-medium text-ink">Regular price</strong> applies because you are booking{" "}
-                    {EARLY_BIRD_MIN_DAYS_BEFORE_START} days or less before the first day of the retreat.
-                  </>
-                )}
-              </p>
-            </div>
-
             <div className="rounded-xl border border-gold-logo/20 bg-terracotta/[0.06] px-4 py-3">
               <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">Quoted total</p>
               <p className="mt-1 font-heading text-2xl font-medium tabular-nums text-ink">

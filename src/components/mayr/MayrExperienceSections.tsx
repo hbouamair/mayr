@@ -1,6 +1,6 @@
 import type { MayrExperienceSection } from "@/lib/mayr-experience-content";
 
-function PhotoPlaceholder({ label }: { label: string }) {
+function PhotoPlaceholder({ label, kicker }: { label: string; kicker: string }) {
   return (
     <div
       className="relative mt-10 overflow-hidden rounded-[1.25rem] border border-dashed border-gold-logo/35 bg-gradient-to-br from-sand/40 via-parchment/60 to-sand/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] sm:mt-12 sm:rounded-[1.4rem]"
@@ -8,7 +8,7 @@ function PhotoPlaceholder({ label }: { label: string }) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,color-mix(in_srgb,var(--gold-logo)_8%,transparent),transparent_65%)]" />
       <div className="relative flex min-h-[180px] flex-col items-center justify-center gap-3 px-6 py-14 sm:min-h-[220px] md:min-h-[260px]">
         <span className="rounded-full border border-gold-logo/25 bg-surface-elevated/80 px-4 py-1.5 font-body text-[10px] font-semibold uppercase tracking-[0.22em] text-muted shadow-sm backdrop-blur-sm">
-          Gallery
+          {kicker}
         </span>
         <p className="max-w-sm text-center font-body text-sm text-muted">{label}</p>
         <p className="font-body text-xs text-gold-muted/90">Picture links coming soon</p>
@@ -24,7 +24,6 @@ function MayrSectionCard({
   section: MayrExperienceSection;
   index: number;
 }) {
-  const n = String(index + 1).padStart(2, "0");
   const isOdd = index % 2 === 0;
 
   return (
@@ -51,19 +50,11 @@ function MayrSectionCard({
 
         <div className="relative z-[1] grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,340px)] lg:items-start lg:gap-12 xl:gap-16">
           <div className="min-w-0">
-            <div className="flex flex-wrap items-baseline justify-between gap-4">
-              <div className="min-w-0">
-                <p className="font-body text-[10px] font-semibold uppercase tracking-[0.32em] text-terracotta/90">{section.kicker}</p>
-                <h2 className="mt-3 font-heading text-[clamp(1.45rem,3.2vw,2.15rem)] font-medium leading-[1.15] tracking-tight text-gradient-brand">
-                  {section.title}
-                </h2>
-              </div>
-              <span
-                className="font-heading text-[clamp(2.5rem,6vw,3.75rem)] font-light leading-none tabular-nums text-gold-logo/25"
-                aria-hidden
-              >
-                {n}
-              </span>
+            <div className="min-w-0">
+              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.32em] text-terracotta/90">{section.kicker}</p>
+              <h2 className="mt-3 font-heading text-[clamp(1.45rem,3.2vw,2.15rem)] font-medium leading-[1.15] tracking-tight text-gradient-brand">
+                {section.title}
+              </h2>
             </div>
 
             <div className="mt-8 space-y-5">
@@ -93,7 +84,7 @@ function MayrSectionCard({
           </div>
 
           <div className="min-w-0 lg:sticky lg:top-[calc(var(--main-pt)+1rem)]">
-            <PhotoPlaceholder label={`${section.title} — add your photography`} />
+            <PhotoPlaceholder kicker={section.kicker} label={`${section.title} — add your photography`} />
           </div>
         </div>
       </div>
