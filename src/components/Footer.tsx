@@ -2,7 +2,15 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { NewsletterBox } from "@/components/NewsletterBox";
-import { INSTAGRAM_URL, SITE_BRAND_NAME, SITE_EMAIL, SITE_LOGO_MARK, TIKTOK_URL, WHATSAPP_LINK } from "@/lib/site";
+import {
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  SITE_BRAND_NAME,
+  SITE_EMAIL,
+  SITE_LOGO_MARK,
+  TIKTOK_URL,
+  WHATSAPP_LINK,
+} from "@/lib/site";
 
 /** Marco-style “Classes” column — core retreat journeys */
 const FOOTER_RETREAT_LINKS = [
@@ -121,6 +129,11 @@ export function Footer() {
               <li>
                 <a href={INSTAGRAM_URL} className="footer-ms-link" target="_blank" rel="noopener noreferrer">
                   Instagram
+                </a>
+              </li>
+              <li>
+                <a href={FACEBOOK_URL} className="footer-ms-link" target="_blank" rel="noopener noreferrer">
+                  Facebook
                 </a>
               </li>
               <li>

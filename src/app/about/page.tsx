@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { AboutGallery } from "@/components/AboutGallery";
 import { SectionIntro } from "@/components/SectionIntro";
-import { aboutGalleryImages, aboutParagraphs } from "@/lib/site-content";
+import { aboutParagraphs } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Marrakech Alchemy Yoga Retreats — Bali-inspired serenity meets Moroccan mystique in the Atlas Mountains and Marrakech Medina.",
+    "Marrakech Alchemy Yoga Center — born in 2024, blending Bali-inspired calm with Morocco. Retreats, studio classes at O-Spa Kenzi Menara Palace, and wellness experiences in Marrakech.",
 };
 
 export default function AboutPage() {
@@ -17,7 +16,7 @@ export default function AboutPage() {
         titleAs="h1"
         eyebrow="Hello"
         title="About us"
-        description="Marrakech Alchemy Yoga Retreats — two worlds in conversation — Moroccan warmth and Balinese calm — in the Red City and the Atlas."
+        description="Bali-inspired serenity meets Morocco — immersive retreats, studio practice at O-Spa Kenzi Menara Palace, and curated wellness across Marrakech."
       />
 
       <div className="mt-16 lg:mt-20">
@@ -38,32 +37,25 @@ export default function AboutPage() {
               <ul className="mt-4 space-y-3 font-body text-sm text-muted">
                 <li className="flex gap-2">
                   <span className="text-terracotta">·</span>
-                  Born in 2023 — Bali meets Morocco
+                  Born in 2024 — Bali meets Morocco
                 </li>
                 <li className="flex gap-2">
                   <span className="text-terracotta">·</span>
-                  Atlas Mountains → Marrakech Medina
+                  Retreats · yoga, meditation & sound healing
                 </li>
                 <li className="flex gap-2">
                   <span className="text-terracotta">·</span>
-                  Yoga, culture, nourishment, rest
+                  Studio at O-Spa, Kenzi Menara Palace
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-terracotta">·</span>
+                  Sound healing, cacao, tea & yoga brunches
                 </li>
               </ul>
             </div>
           </aside>
         </div>
       </div>
-
-      <section className="mt-20 lg:mt-28">
-        <SectionIntro
-          eyebrow="Visual story"
-          title="Gallery"
-          description="Landscapes and spaces that hold our retreats — replace with your photography anytime."
-        />
-        <div className="mt-10 lg:mt-12">
-          <AboutGallery items={aboutGalleryImages} />
-        </div>
-      </section>
     </div>
   );
 }

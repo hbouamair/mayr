@@ -1,25 +1,46 @@
 /** Editorial copy from Marrakech Alchemy website brief (DOCX / client paste). */
 
-import {
-  buildAboutGallery,
-  buildAccommodationGallery,
-  buildFoodGallery,
-} from "./media-assets";
+import { buildAccommodationGallery, buildFoodGallery } from "./media-assets";
 
-export const heroTagline =
-  "Morocco · Restoration · Alchemy";
+export const heroTagline = "Awaken • Connect • Restore";
 
 /** Line under the main hero title (legacy mayr.ma home) */
 export const heroSubtagline = "Where Moroccan charm meets yoga serenity";
 
 export const homeIntro =
-  "Join us for a soulful & authentic yoga journey! Book your spot now and let the Moroccan magic unfold at Marrakech Alchemy Yoga Retreats!";
+  "Join us for a soulful & authentic yoga journey!\nBook your spot now and let the Moroccan magic unfold";
+
+/** Home landing — MAYR block (links to /booking) */
+export const homeMayrSummary = {
+  eyebrow: "MAYR",
+  title: "Marrakech Alchemy Experience",
+  href: "/booking",
+  cta: "Discover MAYR",
+} as const;
+
+/** Longer home copy for MAYR — full-width section */
+export const homeMayrParagraphs: readonly string[] = [
+  "Marrakech Alchemy Experience — MAYR — is how we hold the whole arc of your stay: where you sleep, what you eat, how you move, breathe, and rest, and how you meet Morocco beyond the mat. We work with boutique hotels, riads, and coastal venues chosen for beauty, calm, and a real sense of place — from stone desert light to medina courtyards and ocean air.",
+  "Your days blend Moroccan dining with daily yoga and sound, hammam and pool time, workshops and circles, and curated excursions — pottery, cooking, henna, surf, desert rides, and more — so the retreat feels both grounding and alive.",
+  "Whether you join us for a short immersion or a full week, every MAYR journey is paced for renewal: space to arrive, practice deeply, explore with intention, and leave with clarity and warmth you can carry home.",
+];
+
+/** Home landing — program calendar intro */
+export const homeProgramSummary = {
+  eyebrow: "2026 season",
+  title: "Program calendar",
+  description: "Five dates — tap a card for details, pricing, and booking.",
+  href: "/retreat-program#browse-retreats",
+  cta: "Browse all programs",
+} as const;
 
 export const aboutParagraphs = [
-  "Marrakech Alchemy Yoga Retreats was born in 2023 from a dream to merge the tranquil essence of Bali with the mystic beauty of Morocco, creating a unique yoga experience that resonates with both cultural richness and spiritual depth. Our center is a sacred haven where the vibrant energy of Marrakech seamlessly blends with the soothing traditions of yoga, offering an enchanting fusion of cultural depth, traditions and spiritual renewal.",
-  "Inspired by the lush, healing landscapes of Bali, we've infused its tranquil spirit into the heart of Morocco. This harmonious blend is elevated by the breathtaking surroundings of Marrakech, where the red-hued cityscape meets the majestic peaks of the Atlas Mountains. Every corner of our retreat reflects a symphony of Moroccan hospitality and Balinese serenity, creating a space that feels both grounding and transformative.",
-  "Our retreats are thoughtfully curated to celebrate this unique cultural fusion. From the flavors of traditional Moroccan cuisine to the soulful rhythms of local activities, each element is designed to connect you with the beauty of both worlds. Guests are invited to immerse themselves in ancient practices, embrace the magic of Marrakech, and find harmony in a setting that feels timeless.",
-  "This is not just a retreat—it's an alchemical journey of renewal, self-discovery, and connection to a deeper sense of being. Welcome to Marrakech Alchemy Yoga Retreats, where two worlds meet to inspire the best in you.",
+  "Marrakech Alchemy Yoga Retreats was born in 2024 from a vision to merge the tranquil essence of Bali with the mystic beauty of Morocco, creating a unique yoga experience rooted in both cultural richness and spiritual depth.",
+  "Based in Marrakech, where the red city meets the majestic Atlas Mountains, we offer immersive yoga retreats as our core experience, carefully curated journeys designed for renewal, connection, and transformation. Each retreat blends authentic Moroccan culture with the grounding practices of yoga, meditation, and sound healing.",
+  "Alongside our retreats, we host regular yoga classes at our studio, currently based at O-Spa by Kenzi Menara Palace Marrakech, providing a serene space for both locals and travelers to practice.",
+  "We also curate a variety of wellness experiences across Marrakech, including sound healing sessions, cacao ceremonies, tea rituals, and yoga & brunch gatherings. Each designed to bring people together in meaningful and inspiring ways.",
+  "This is not just a retreat center, it's an alchemical journey of renewal, self-discovery, and connection to a deeper sense of being.",
+  "Welcome to Marrakech Alchemy Yoga Center, where two worlds meet to inspire the best in you.",
 ];
 
 export const accommodationParagraphs = [
@@ -65,56 +86,6 @@ export const retreatSchedule = [
 
 export const retreatScheduleClosing =
   "This carefully curated schedule offers a blend of movement, creativity, relaxation, and cultural immersion, making each day a truly transformative experience.";
-
-/** Vertical timeline on Retreat program — 8 days / 7 nights per week */
-export type RetreatCalendar2026Entry = {
-  id: string;
-  month: string;
-  /** Full date range label */
-  dateRange: string;
-  title: string;
-  description: string;
-};
-
-export const retreatCalendar2026Intro =
-  "Three curated weeks in 2026 — Atlas stillness, Medina soul, and the full Marrakech Alchemy journey. Each block follows our signature 8-day, two-location itinerary.";
-
-export const retreatCalendar2026: RetreatCalendar2026Entry[] = [
-  {
-    id: "2026-05",
-    month: "May",
-    dateRange: "May 3 – 10, 2026",
-    title: "Spring renewal in Morocco",
-    description:
-      "Wake to mountain air in the Atlas, then follow the arc into the Medina — Vinyasa and restorative practices, sound journeys, Moroccan cooking, and slow evenings under open sky. A gentle reopening of body and senses as the land greens.",
-  },
-  {
-    id: "2026-07",
-    month: "July",
-    dateRange: "July 5 – 12, 2026",
-    title: "High summer immersion",
-    description:
-      "Long light, warm nights, and full cultural rhythm — workshops, souk walks, tea ritual, and our evening yin and sound. Space to go deep in community while the city hums at its most alive.",
-  },
-  {
-    id: "2026-09",
-    month: "September",
-    dateRange: "September 6 – 13, 2026",
-    title: "Harvest stillness & return",
-    description:
-      "As heat softens, settle into a week of integration — journaling walks, pottery or mandala afternoons, and restorative closure before you carry the retreat home. Ideal if you crave clarity and a grounded finish to the season.",
-  },
-];
-
-/** Prefills the booking message (and WhatsApp “notes” block) for a chosen 2026 week */
-export function retreatCalendarWeekBookingPrefill(entry: RetreatCalendar2026Entry): string {
-  return [
-    `I'd like to book this 2026 week: ${entry.title}`,
-    `Dates: ${entry.dateRange} (${entry.month} 2026).`,
-    "",
-    "Please confirm availability. Preferred room: I'll choose below or add notes here.",
-  ].join("\n");
-}
 
 export const pricingMeta = {
   nights: "8 nights, 7 days",
@@ -171,34 +142,51 @@ export const services = [
   },
 ];
 
-export type Testimonial = { quote: string };
+export type Testimonial = {
+  name: string;
+  /** ISO 3166-1 alpha-2 code (lowercase) for flag image, e.g. cn, us, ca */
+  countryCode: string;
+  quote: string;
+  /** Optional `lang` on the blockquote (e.g. zh-CN for Chinese) */
+  quoteLang?: string;
+};
 
-/** Testimonials — shown without guest names per client note */
 export const testimonials: Testimonial[] = [
   {
-    quote:
-      "My first sound healing experience was very calming and relaxing. Singing bowls and gongs, soothing sounds that helped us clear our minds and feel more balanced. A truly peaceful and healing experience.",
+    name: "Duan Shuli",
+    countryCode: "cn",
+    quoteLang: "zh-CN",
+    quote: `我最近参加了Souha的声音疗愈课程，真心觉得这是一次深刻的心灵之旅。从课程开始的那一刻起，我就感受到了平静的能量，迅速使我的身心放松。Souha的嗓音温柔又有力量，她的声音让我深深进入了放松和疗愈的状态。
+
+她的声音与她所使用的声音疗愈乐器相结合，创造出一种和谐的氛围，瞬间让内心感到平静。
+我强烈推荐给任何寻求深度放松、疗愈与美丽转化体验的人。`,
   },
   {
-    quote:
-      "I loved your circles of love and kindness — calmness, love and beauty.",
+    name: "Nilgun Demir",
+    countryCode: "tr",
+    quote: `More than just an incredible teacher, Souha have been a truly supportive friend, one whose presence has meant so much beyond the mat. The way she hold space, not just for movement but for deep connection, is something rare and beautiful. Her long pauses, the quiet moments of reflection, and the way she truly see and feel her students create something far beyond a class, it's a heart connection, a shared understanding of life itself.`,
   },
   {
-    quote:
-      "An incredibly powerful sound healing session — stunning voice and just the right length of time.",
+    name: "Blake Valentino",
+    countryCode: "us",
+    quote: `Souha was dedicated in her organization of our yoga program in Bali, passionate about yoga, so caring for her students. Also very compassionate and humble. She cares about all of us and was extremely well organized.`,
   },
   {
-    quote:
-      "The greatest energy during our circles — truly listened, understood, and felt. A force of nature; I'm so grateful.",
+    name: "Giovanna De Leo",
+    countryCode: "us",
+    quote: `Souha is a compassionate and talented program manager who I met during my yoga teacher training in bali. During my training, Souha was very approachable and quick to answer all of my questions; she also sat with me through a challenging moment when I needed to talk to someone. Souha is consistently authentic in her commitment towards serving others through her work and as a fellow yogi. Additionally, she leads fantastic sound baths and sings beautifully. Thank you, Souha!`,
   },
   {
-    quote:
-      "Wonderful and grounding experience — goosebumps and real vibrations. Please more of that kind of experience.",
+    name: "Jingwen LUO",
+    countryCode: "cn",
+    quote: `I am so grateful for the incredible sound healing sessions with Souha. Her professionalism and deep knowledge make every class a truly transformative experience. She creates a nurturing space where she listens to and cares for each student, sharing her wisdom with so much generosity. As my yoga teacher training school manager, she continues to inspire me with her dedication and kindness.`,
+  },
+  {
+    name: "Gabrielle El Maleh",
+    countryCode: "ca",
+    quote: `Thank you for sharing the wisdom of manifestation with us. Thank you for being a sounding board to help navigate this soulfully challenging experience. Thank you for allowing so much space for growth. Thank you for offering non judgement and welcoming atmosphere for deep levels of healing tears and joy laughter and deep enriching sound healing. I felt a deep connection to Souha and she is so thorough at making sure everyone is accounted for. She is a wealth of knowledge in all things overcoming obstacles, navigating your own inner work, finding balance in personal expectation among societal pressures`,
   },
 ];
-
-/** Local photography: `public/accomondation/` + `public/activity/` */
-export const aboutGalleryImages: { src: string; alt: string }[] = buildAboutGallery();
 
 /** Home “Accommodation” strip — `public/accomondation/` only */
 export const accommodationGalleryImages: { src: string; alt: string }[] = buildAccommodationGallery();

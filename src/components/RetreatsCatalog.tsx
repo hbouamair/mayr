@@ -176,7 +176,7 @@ function RetreatGridCard({ r }: { r: RetreatListing }) {
       />
       <span className="card-2026__noise pointer-events-none absolute inset-0 opacity-[0.04]" aria-hidden />
 
-      <div className="relative z-[1] aspect-[4/3] w-full overflow-hidden">
+      <div className="relative z-[1] aspect-[3/4] w-full overflow-hidden">
         <Image
           src={r.coverImage}
           alt={`${r.title} — ${r.location}`}

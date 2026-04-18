@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionIntro } from "@/components/SectionIntro";
 import {
+  IconFacebookGlyph,
   IconInstagramGlyph,
   IconMailGlyph,
   IconTikTokGlyph,
   IconWhatsAppGlyph,
 } from "@/components/icons/SocialGlyphs";
-import { INSTAGRAM_URL, SITE_EMAIL, TIKTOK_URL, WHATSAPP_LINK } from "@/lib/site";
+import { FACEBOOK_URL, INSTAGRAM_URL, SITE_EMAIL, SITE_PHONE_DISPLAY, TIKTOK_URL, WHATSAPP_LINK } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -79,7 +80,23 @@ export default function ContactPage() {
                   </span>
                   <span className="contact-aside-2026__channel-body">
                     <span className="contact-aside-2026__kicker">WhatsApp</span>
-                    <span className="contact-aside-2026__value contact-aside-2026__value--accent">Chat with us</span>
+                    <span className="contact-aside-2026__value contact-aside-2026__value--accent">{SITE_PHONE_DISPLAY}</span>
+                  </span>
+                </a>
+              </li>
+              <li className="contact-aside-2026__row">
+                <a
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-aside-2026__channel"
+                >
+                  <span className="contact-aside-2026__icon" aria-hidden>
+                    <IconFacebookGlyph />
+                  </span>
+                  <span className="contact-aside-2026__channel-body">
+                    <span className="contact-aside-2026__kicker">Facebook</span>
+                    <span className="contact-aside-2026__value contact-aside-2026__value--accent">Marrakech Alchemy</span>
                   </span>
                 </a>
               </li>

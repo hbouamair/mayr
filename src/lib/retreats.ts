@@ -1,6 +1,26 @@
-import { retreatListingPhotos } from "./media-assets";
+import { MEDIA_ACTIVITY_PATHS } from "./media-assets";
+import { publicAssetPath } from "./public-path";
 
-/** Placeholder retreat dates — replace with real schedules when confirmed. */
+/** Poster art in `public/Picture1.png` … `Picture5.png` — one per scheduled program. */
+const PROGRAM_POSTERS = [
+  publicAssetPath("Picture1.png"),
+  publicAssetPath("Picture2.png"),
+  publicAssetPath("Picture3.png"),
+  publicAssetPath("Picture4.png"),
+  publicAssetPath("Picture5.png"),
+] as const;
+
+const activityGallery = MEDIA_ACTIVITY_PATHS.map((p) => publicAssetPath(p));
+
+function programPhotos(index: number): { coverImage: string; extendedGallery: readonly string[] } {
+  const n = activityGallery.length;
+  return {
+    coverImage: PROGRAM_POSTERS[index] ?? PROGRAM_POSTERS[0]!,
+    extendedGallery: Array.from({ length: 6 }, (_, k) => activityGallery[(index * 2 + k) % n]!),
+  };
+}
+
+/** 2026 retreat programs — cards on /retreat-program */
 export type RetreatStatus = "open" | "few_spots" | "full" | "new";
 
 export type RetreatListing = {
@@ -25,152 +45,105 @@ export type RetreatListing = {
   placeKey: string;
   /** Short copy about the venue and setting */
   placeNote: string;
+  /** First day of the retreat (YYYY-MM-DD) — early-bird vs regular is derived from booking date vs this */
+  retreatStartIso: string;
 };
 
 export const retreatListings: RetreatListing[] = [
   {
-    id: "r1",
-    slug: "atlas-stillness",
-    title: "Atlas Stillness",
-    dateLabel: "7–14 Mar 2026",
-    monthKey: "mar",
-    location: "Ourika Valley · Morocco",
-    language: "English",
-    focus: "Hatha · Nidra",
-    status: "few_spots",
-    offerId: "private-room",
-    summary:
-      "A grounded week of Hatha and Yoga Nidra at the foot of the Atlas — mornings for practice, afternoons for the river gardens or quiet courtyard time.",
-    placeKey: "Ourika Valley",
-    ...retreatListingPhotos(0),
-    placeNote:
-      "Based in the Ourika Valley south of Marrakech — Berber villages, olive groves, and High Atlas views — with a cool shala and patios when the day heats up.",
-  },
-  {
-    id: "r2",
-    slug: "red-city-flow",
-    title: "Red City Flow",
-    dateLabel: "21–27 Mar 2026",
-    monthKey: "mar",
-    location: "Medina · Marrakech",
-    language: "English",
-    focus: "Vinyasa · Meditation",
-    status: "open",
-    offerId: "twin-room",
-    summary:
-      "Dynamic vinyasa paired with still meditation — built for guests who want movement, breath, and space to integrate.",
-    placeKey: "Medina",
-    ...retreatListingPhotos(1),
-    placeNote:
-      "Inside the UNESCO medina walls: narrow lanes, souks, and riad courtyards. The shala catches shifting light from the patio — flow inside, mint tea steps away.",
-  },
-  {
-    id: "r3",
-    slug: "sanctuary-week",
-    title: "Sanctuary Week",
-    dateLabel: "4–10 Apr 2026",
+    id: "empower-2026",
+    slug: "empower-experience-2026",
+    title: "Empower Experience 2026",
+    dateLabel: "31 Mar – 4 Apr 2026 · 4 nights, 5 days",
     monthKey: "apr",
-    location: "Kasbah · Marrakech",
-    language: "French",
-    focus: "Restorative · Yin",
+    location: "Désert d'Agafay, Maroc",
+    language: "French · English",
+    focus: "Empower · Coaching",
     status: "new",
-    offerId: "triple-room",
-    summary:
-      "Led in French: slow restorative and yin sessions, nourishing meals, and unhurried days designed for deep nervous-system ease.",
-    placeKey: "Kasbah",
-    ...retreatListingPhotos(2),
-    placeNote:
-      "The Kasbah quarter — calmer than the main souk routes, still deeply Moroccan. Soft light in the salons and a hush that suits restorative work and long evenings.",
-  },
-  {
-    id: "r4",
-    slug: "desert-dawn-yoga",
-    title: "Desert Dawn Yoga",
-    dateLabel: "18–24 Apr 2026",
-    monthKey: "apr",
-    location: "Agafay Desert · Morocco",
-    language: "English",
-    focus: "Vinyasa · Pranayama",
-    status: "full",
     offerId: "private-room",
     summary:
-      "Early practice, pranayama, and flowing sequences at the edge of the Agafay stone desert — fully booked; join the waitlist or ask about similar dates.",
+      "With Christel Ingless, Business & Life Coach — a focused five-day immersion in the Agafay desert to reset clarity, leadership, and life rhythm.",
     placeKey: "Agafay Desert",
-    ...retreatListingPhotos(3),
+    retreatStartIso: "2026-03-31",
+    ...programPhotos(0),
     placeNote:
-      "Agafay lies barely an hour from Marrakech — lunar ridges and open horizon at dawn. Evenings often mean stars, silence, and optional runs into town for hammam or dinner.",
+      "Le désert d'Agafay — paysage minéral et horizons larges à une heure de Marrakech. Soirées sous les étoiles et retraites pensées pour l’ancrage et l’élan.",
   },
   {
-    id: "r5",
-    slug: "inner-alchemy",
-    title: "Inner Alchemy",
-    dateLabel: "2–8 May 2026",
+    id: "sacred-feminine-2026",
+    slug: "sacred-feminine-retreat-2026",
+    title: "The Sacred Feminine Retreat",
+    dateLabel: "26–30 May 2026 · 4 nights, 5 days",
     monthKey: "may",
-    location: "Mellah · Marrakech",
+    location: "Marrakech · Morocco",
     language: "English",
-    focus: "Hatha · Journaling",
+    focus: "Sacred Feminine",
     status: "open",
     offerId: "twin-room",
     summary:
-      "Steady hatha with guided reflection and journaling — ideal if you want structure without rushing the inner work.",
-    placeKey: "Mellah",
-    ...retreatListingPhotos(4),
+      "Four nights and five days in Marrakech — embodied practice, circle, and ritual space for the sacred feminine.",
+    placeKey: "Marrakech",
+    retreatStartIso: "2026-05-26",
+    ...programPhotos(1),
     placeNote:
-      "The historic Mellah borders the kasbah and royal gardens. Rooftops and small courtyards are made for journaling — intimate scale, real medina life just beyond the door.",
+      "Hosted in Marrakech — riads, patios, and the pulse of the medina when you want color and contrast beside the mat.",
   },
   {
-    id: "r6",
-    slug: "gathered-circle",
-    title: "Gathered Circle",
-    dateLabel: "16–22 May 2026",
-    monthKey: "may",
-    location: "Palmeraie · Marrakech",
+    id: "summer-yoga-2026",
+    slug: "morocco-summer-yoga-essaouira-2026",
+    title: "Morocco Summer Yoga Retreat",
+    dateLabel: "24–30 Aug 2026 · 6 nights, 7 days",
+    monthKey: "aug",
+    location: "Essaouira · Morocco",
     language: "English",
-    focus: "Movement · Nidra",
-    status: "few_spots",
-    offerId: "triple-room",
-    summary:
-      "Playful movement explorations and long nidra rests — a communal, heart-forward week with limited spots remaining.",
-    placeKey: "Palmeraie",
-    ...retreatListingPhotos(5),
-    placeNote:
-      "North of the medina, the Palmeraie’s date palms and garden villas feel worlds away. Long tables under the trees, practice in a bright shala, then pool or walks between the dunes of shade.",
-  },
-  {
-    id: "r7",
-    slug: "summer-opening",
-    title: "Summer Opening",
-    dateLabel: "6–12 Jun 2026",
-    monthKey: "jun",
-    location: "Hivernage · Marrakech",
-    language: "English",
-    focus: "Vinyasa · Sound",
-    status: "new",
+    focus: "Summer · Vinyasa",
+    status: "open",
     offerId: "private-room",
     summary:
-      "Our summer kickoff: uplifting vinyasa and sound-led relaxation — new on the calendar, same full retreat inclusions.",
-    placeKey: "Hivernage",
-    ...retreatListingPhotos(6),
+      "A full week on the Atlantic coast — summer light, ocean air, and daily practice framed by Essaouira’s relaxed rhythm.",
+    placeKey: "Essaouira",
+    retreatStartIso: "2026-08-24",
+    ...programPhotos(2),
     placeNote:
-      "Hivernage — gardens, cafés, and quiet streets west of the medina. Pool, zellige, and terraces catch summer light; after sound you’re minutes from the ramparts or a late drink in Gueliz.",
+      "Essaouira — breezes, ramparts, and long skies. The pace softens; practice and free time balance naturally by the sea.",
   },
   {
-    id: "r8",
-    slug: "golden-hour-retreat",
-    title: "Golden Hour Retreat",
-    dateLabel: "20–26 Sep 2026",
+    id: "autumn-yoga-2026",
+    slug: "morocco-autumn-yoga-marrakech-2026",
+    title: "Morocco Autumn Yoga Retreat",
+    dateLabel: "7–13 Sep 2026 · 6 nights, 7 days",
     monthKey: "sep",
-    location: "Gueliz · Marrakech",
-    language: "French",
-    focus: "Restorative · Breath",
+    location: "Marrakech · Morocco",
+    language: "English",
+    focus: "Autumn · Yoga",
     status: "open",
     offerId: "twin-room",
     summary:
-      "Late-summer softness in French: restorative shapes, breathwork, and long evenings as the light turns gold over the city.",
-    placeKey: "Gueliz",
-    ...retreatListingPhotos(7),
+      "Six nights as the heat eases — autumn yoga in Marrakech with space to integrate, explore, and restore.",
+    placeKey: "Marrakech",
+    retreatStartIso: "2026-09-07",
+    ...programPhotos(3),
     placeNote:
-      "Gueliz is Marrakech’s art-deco quarter — wide avenues, galleries, and sunset over the rooftops toward the High Atlas. Tea on the terrace, then the medina’s lanterns a short taxi away.",
+      "Autumn in Marrakech — warm days, cooler evenings, and the gardens at their most inviting after summer.",
+  },
+  {
+    id: "vinyasa-ytt-2026",
+    slug: "vinyasa-yoga-teacher-training-essaouira-2026",
+    title: "50 Hours Vinyasa Yoga Teacher Training",
+    dateLabel: "21–29 Sep 2026 · 8 nights, 9 days",
+    monthKey: "sep",
+    location: "Essaouira · Morocco",
+    language: "English",
+    focus: "YTT · Vinyasa 50h",
+    status: "open",
+    offerId: "private-room",
+    summary:
+      "An intensive 50-hour Vinyasa teacher training on the coast — skill-building, sequencing, and teaching labs over eight nights.",
+    placeKey: "Essaouira",
+    retreatStartIso: "2026-09-21",
+    ...programPhotos(4),
+    placeNote:
+      "Essaouira offers a focused container: ocean light for study days, walkable medina breaks, and room to rehearse teaching in a small group.",
   },
 ];
 
@@ -181,40 +154,25 @@ export function getRetreatBySlug(slug: string): RetreatListing | undefined {
 export const retreatLanguages = ["all", "English", "French"] as const;
 export const retreatMonths = [
   { key: "all", label: "All dates" },
-  { key: "mar", label: "March" },
   { key: "apr", label: "April" },
   { key: "may", label: "May" },
-  { key: "jun", label: "June" },
+  { key: "aug", label: "August" },
   { key: "sep", label: "September" },
 ] as const;
 
 export const retreatFocuses = [
   "all",
-  "Hatha · Nidra",
-  "Vinyasa · Meditation",
-  "Restorative · Yin",
-  "Vinyasa · Pranayama",
-  "Hatha · Journaling",
-  "Movement · Nidra",
-  "Vinyasa · Sound",
-  "Restorative · Breath",
+  "Empower · Coaching",
+  "Sacred Feminine",
+  "Summer · Vinyasa",
+  "Autumn · Yoga",
+  "YTT · Vinyasa 50h",
 ] as const;
 
 /** Place filter — matches `placeKey` on each listing */
 export const retreatPlaceOptions = [
   { key: "all", label: "All places" },
-  ...(
-    [
-      "Agafay Desert",
-      "Gueliz",
-      "Hivernage",
-      "Kasbah",
-      "Medina",
-      "Mellah",
-      "Ourika Valley",
-      "Palmeraie",
-    ] as const
-  ).map((k) => ({ key: k, label: k })),
+  ...(["Agafay Desert", "Essaouira", "Marrakech"] as const).map((k) => ({ key: k, label: k })),
 ] as const;
 
 export const retreatStatusFilters = [

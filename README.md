@@ -1,6 +1,6 @@
 # Marrakech Alchemy Yoga Retreats — website
 
-Next.js (App Router) marketing and booking inquiry site: room offers, Terms & Privacy, and a form that opens WhatsApp (`+21261695998`) and optionally emails `Marrakech.alchemy@gmail.com` via [Resend](https://resend.com).
+Next.js (App Router) marketing and booking inquiry site: room offers, Terms & Privacy, and a form that opens WhatsApp (`+212 600 097 406`) and optionally emails `Marrakech.alchemy@gmail.com` via [Resend](https://resend.com).
 
 ## Setup
 

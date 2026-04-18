@@ -75,16 +75,6 @@ export function buildFoodGallery(): { src: string; alt: string }[] {
   }));
 }
 
-export function buildAboutGallery(): { src: string; alt: string }[] {
-  return [
-    { path: MEDIA_ACCOMMODATION_PATHS[0], alt: ACCOMMODATION_ALTS[0] },
-    { path: MEDIA_ACCOMMODATION_PATHS[1], alt: ACCOMMODATION_ALTS[1] },
-    { path: MEDIA_ACTIVITY_PATHS[0], alt: ACTIVITY_ALTS[0] },
-    { path: MEDIA_ACTIVITY_PATHS[1], alt: ACTIVITY_ALTS[1] },
-    { path: MEDIA_ACTIVITY_PATHS[2], alt: ACTIVITY_ALTS[2] },
-  ].map(({ path, alt }) => ({ src: publicAssetPath(path), alt }));
-}
-
 export function buildAccommodationGallery(): { src: string; alt: string }[] {
   return MEDIA_ACCOMMODATION_PATHS.map((path, i) => ({
     src: publicAssetPath(path),

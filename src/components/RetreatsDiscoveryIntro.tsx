@@ -9,10 +9,10 @@ export function RetreatsDiscoveryIntro() {
         titleAs="h1"
         titleScale="page"
         eyebrow="Retreats"
-        title="Discover transformative retreat weeks"
-        titleHighlight="Discover transformative retreat weeks"
-        titleRest="from medina courtyards to Atlas valleys and open desert light."
-        description="Use the filters to narrow language, place, month, focus, or availability — then open any week for the full story, activity photography, and how to reserve."
+        title="Our five 2026 programs"
+        titleHighlight="Our five 2026 programs"
+        titleRest="from Agafay and Marrakech to Essaouira — coaching, retreats, and teacher training."
+        description="Each card uses a poster from the season. Use the filters below to narrow place, month, or focus — then open a program for the full story, gallery, and how to reserve."
         descriptionClassName="max-w-3xl"
       />
     </div>

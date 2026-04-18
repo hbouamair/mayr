@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { RetreatsCalendar2026 } from "@/components/RetreatsCalendar2026";
 import { RetreatsCatalog } from "@/components/RetreatsCatalog";
 import { RetreatsDiscoveryIntro } from "@/components/RetreatsDiscoveryIntro";
 
 export const metadata: Metadata = {
-  title: "Retreat Program",
+  title: "Our Programs",
   description:
-    "Browse Marrakech retreat weeks — filter by language, place, month, focus, and availability.",
+    "Five 2026 Marrakech Alchemy programs — Empower, Sacred Feminine, summer and autumn retreats, and 50h Vinyasa YTT. Filter by place and dates, then open a program for details.",
 };
 
 export default function RetreatProgramPage() {
@@ -18,7 +17,6 @@ export default function RetreatProgramPage() {
         aria-label="Browse scheduled retreat weeks"
       >
         <RetreatsDiscoveryIntro />
-        <RetreatsCalendar2026 />
         <div className="mt-6 sm:mt-8">
           <RetreatsCatalog />
         </div>
