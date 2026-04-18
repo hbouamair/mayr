@@ -61,7 +61,7 @@ export function RetreatsCalendar2026() {
             <span className="text-ink">retreats 2026</span>
           </h2>
           <p className="mt-5 font-body text-base font-light leading-[1.75] tracking-wide text-muted sm:text-[17px]">
-            {retreatCalendar2026Intro}
+            {retreatCalendar2026Intro.description}
           </p>
         </header>
 
