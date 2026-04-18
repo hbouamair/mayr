@@ -39,7 +39,7 @@ export function HomeHeroSlider({ children }: HomeHeroSliderProps) {
         {HERO_BACKGROUND_SLIDES.map((slide, i) => (
           <div
             key={slide.src}
-            className={`absolute inset-0 transition-none ${
+            className={`absolute inset-0 overflow-hidden transition-none ${
               i === index ? "z-[2] opacity-100" : "z-[1] pointer-events-none opacity-0"
             }`}
           >
@@ -48,9 +48,9 @@ export function HomeHeroSlider({ children }: HomeHeroSliderProps) {
               alt=""
               fill
               priority={i === 0}
-              quality={100}
+              quality={90}
               sizes="100vw"
-              className="object-cover object-center"
+              className={slide.imageClassName ?? "object-cover object-center"}
             />
           </div>
         ))}

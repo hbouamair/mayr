@@ -98,7 +98,7 @@ export function HomeMarrakechExperienceSection() {
                     src={card.imageSrc}
                     alt=""
                     fill
-                    quality={100}
+                    quality={90}
                     className="object-cover transition-transform duration-[1.15s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/card:scale-[1.045] motion-reduce:transition-none"
                     sizes={
                       i === 0

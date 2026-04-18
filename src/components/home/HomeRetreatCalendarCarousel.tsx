@@ -88,7 +88,7 @@ function SlideCard({
             src={r.coverImage}
             alt={r.title}
             fill
-            quality={100}
+            quality={90}
             className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] motion-reduce:transition-none"
             sizes="(max-width: 640px) 28vw, (max-width: 1024px) 22vw, 18vw"
           />

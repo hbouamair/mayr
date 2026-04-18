@@ -71,7 +71,7 @@ export default async function RetreatDetailPage({ params }: Props) {
             alt={`Affiche — ${r.title}`}
             fill
             priority
-            quality={100}
+            quality={90}
             className="object-cover"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 28rem, 32rem"
           />

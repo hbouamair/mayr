@@ -169,7 +169,7 @@ function RetreatGridCard({ r }: { r: RetreatListing }) {
           src={r.coverImage}
           alt={`${r.title} — ${r.location}`}
           fill
-          quality={100}
+          quality={90}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-[transform,filter] duration-700 ease-out motion-safe:group-hover/card:scale-[1.045] motion-safe:group-hover/card:brightness-[1.03]"
         />

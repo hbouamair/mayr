@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
     root: projectRoot,
   },
   images: {
-    /** Allow `quality={100}` on `next/image` (Next 16 defaults to [75] only). */
-    qualities: [75, 100],
+    /** Allowed `quality` values for `next/image` (Next 16 defaults to [75] only). */
+    qualities: [75, 90, 100],
     remotePatterns: [
       {
         protocol: "https",

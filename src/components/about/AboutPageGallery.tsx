@@ -26,7 +26,7 @@ export function AboutPageGallery({ images }: AboutPageGalleryProps) {
           src={a.src}
           alt={a.alt}
           fill
-          quality={100}
+          quality={90}
           sizes="100vw"
           className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02] motion-reduce:transition-none"
         />
@@ -47,7 +47,7 @@ export function AboutPageGallery({ images }: AboutPageGalleryProps) {
               src={img.src}
               alt={img.alt}
               fill
-              quality={100}
+              quality={90}
               sizes="(max-width: 640px) 100vw, 50vw"
               className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] motion-reduce:transition-none"
             />
@@ -68,7 +68,7 @@ export function AboutPageGallery({ images }: AboutPageGalleryProps) {
             src={a.src}
             alt={a.alt}
             fill
-            quality={100}
+            quality={90}
             sizes="(max-width: 1024px) 100vw, 58vw"
             className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] motion-reduce:transition-none"
           />
@@ -83,7 +83,7 @@ export function AboutPageGallery({ images }: AboutPageGalleryProps) {
               src={b.src}
               alt={b.alt}
               fill
-              quality={100}
+              quality={90}
               sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] motion-reduce:transition-none"
             />
@@ -99,7 +99,7 @@ export function AboutPageGallery({ images }: AboutPageGalleryProps) {
               src={c.src}
               alt={c.alt}
               fill
-              quality={100}
+              quality={90}
               sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] motion-reduce:transition-none"
             />
@@ -116,7 +116,7 @@ export function AboutPageGallery({ images }: AboutPageGalleryProps) {
             src={wide.src}
             alt={wide.alt}
             fill
-            quality={100}
+            quality={90}
             sizes="(max-width: 1024px) 100vw, 72vw"
             className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02] motion-reduce:transition-none"
           />
@@ -135,7 +135,7 @@ export function AboutPageGallery({ images }: AboutPageGalleryProps) {
                 src={img.src}
                 alt={img.alt}
                 fill
-                quality={100}
+                quality={90}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] motion-reduce:transition-none"
               />

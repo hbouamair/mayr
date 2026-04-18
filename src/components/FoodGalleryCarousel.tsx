@@ -90,7 +90,7 @@ export function FoodGalleryCarousel({ items, variant = "default" }: FoodGalleryC
                 src={item.src}
                 alt={item.alt}
                 fill
-                quality={100}
+                quality={90}
                 sizes={isEditorial ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 42vw, 100vw"}
                 className={`object-cover ${isEditorial ? "scale-[1.02]" : ""}`}
                 priority={i === 0}
@@ -158,7 +158,7 @@ export function FoodGalleryCarousel({ items, variant = "default" }: FoodGalleryC
               aria-label={`Show image ${i + 1}`}
               aria-current={i === index ? "true" : undefined}
             >
-              <Image src={item.src} alt="" fill sizes="96px" quality={100} className="object-cover" />
+              <Image src={item.src} alt="" fill sizes="96px" quality={90} className="object-cover" />
             </button>
           ))}
         </div>

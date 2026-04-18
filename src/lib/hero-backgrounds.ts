@@ -1,15 +1,17 @@
 import { publicAssetPath } from "./public-path";
 
-/** Full-bleed home hero slides — every file in `public/homePage/` */
+export type HeroBackgroundSlide = {
+  src: string;
+  alt: string;
+  /** Extra classes for focal zoom (e.g. `rr.jpeg` — emphasize hands). */
+  imageClassName?: string;
+};
 
-export const HERO_BACKGROUND_SLIDES = [
+/** Full-bleed home hero slides — `public/homePage/` */
+export const HERO_BACKGROUND_SLIDES: readonly HeroBackgroundSlide[] = [
   {
     src: publicAssetPath("homePage/IMG_1526.JPG"),
     alt: "Marrakech Alchemy — retreat and Moroccan light",
-  },
-  {
-    src: publicAssetPath("homePage/E67A4031.JPG"),
-    alt: "Yoga retreat setting in Morocco",
   },
   {
     src: publicAssetPath("homePage/DSC07115.jpeg"),
@@ -26,10 +28,6 @@ export const HERO_BACKGROUND_SLIDES = [
   {
     src: publicAssetPath("homePage/DSC07114 (1).jpeg"),
     alt: "Moments from Marrakech Alchemy retreats",
-  },
-  {
-    src: publicAssetPath("homePage/IMG_3642.jpg"),
-    alt: "Marrakech Alchemy Yoga Retreats — home hero",
   },
   {
     src: publicAssetPath("homePage/IMG_4162.jpg"),
@@ -52,15 +50,13 @@ export const HERO_BACKGROUND_SLIDES = [
     alt: "Retreat experience in Morocco",
   },
   {
-    src: publicAssetPath("homePage/ffr.png"),
-    alt: "Marrakech Alchemy Yoga Retreats",
-  },
-  {
     src: publicAssetPath("homePage/rr.jpeg"),
-    alt: "Moroccan retreat and yoga",
+    alt: "Hands and practice — Marrakech Alchemy",
+    imageClassName:
+      "origin-center scale-[1.38] sm:scale-[1.28] object-cover object-[48%_52%] sm:object-[46%_50%]",
   },
   {
     src: publicAssetPath("homePage/zae.jpeg"),
     alt: "Marrakech Alchemy — hero image",
   },
-] as const;
+];
