@@ -22,8 +22,8 @@ const FOOTER_RETREAT_LINKS = [
 /** “Company” column */
 const FOOTER_COMPANY_LINKS = [
   { href: "/about", label: "About us" },
-  { href: "/team", label: "Our team" },
-  { href: "/contact", label: "Contact" },
+  { href: "/team", label: "Our fellows" },
+  { href: "/contact", label: "Contact us" },
 ] as const;
 
 /** “Support” column */

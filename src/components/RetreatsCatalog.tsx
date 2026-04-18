@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
+  isRetreatPast,
+  retreatHostByline,
   retreatLanguages,
   retreatListings,
   retreatMonths,
@@ -148,6 +150,7 @@ export function RetreatsCatalog() {
 }
 
 function RetreatGridCard({ r }: { r: RetreatListing }) {
+  const past = isRetreatPast(r);
   const detailHref = `/rooms/${r.slug}`;
   return (
     <Link
@@ -179,14 +182,21 @@ function RetreatGridCard({ r }: { r: RetreatListing }) {
         />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-parchment/95 via-parchment/20 to-transparent" aria-hidden />
         <div className="absolute left-3.5 top-3.5 z-[2] flex max-w-[calc(100%-1.75rem)] flex-wrap gap-1.5">
+          {past ? (
+            <span className="rounded-full border border-white/30 bg-ink/55 px-2.5 py-1 font-body text-[9px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-md">
+              This retreat has passed
+            </span>
+          ) : null}
           <span className="rounded-full border border-white/25 bg-ink/35 px-2.5 py-1 font-body text-[9px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md">
             {r.language}
           </span>
-          <span
-            className={`rounded-full px-2.5 py-1 font-body text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-sm ring-1 ring-white/25 ${statusPillClass(r.status)}`}
-          >
-            {statusLabel(r.status)}
-          </span>
+          {!past ? (
+            <span
+              className={`rounded-full px-2.5 py-1 font-body text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-sm ring-1 ring-white/25 ${statusPillClass(r.status)}`}
+            >
+              {statusLabel(r.status)}
+            </span>
+          ) : null}
         </div>
         <p className="absolute bottom-3.5 left-3.5 right-3.5 z-[2] font-body text-[11px] font-medium uppercase tracking-[0.22em] text-gold-logo drop-shadow-sm">
           {r.focus}
@@ -197,6 +207,7 @@ function RetreatGridCard({ r }: { r: RetreatListing }) {
         <h2 className="font-heading text-[1.15rem] font-medium leading-snug tracking-tight text-ink sm:text-[1.2rem]">
           <span className="transition-colors duration-300 group-hover/card:text-terracotta">{r.title}</span>
         </h2>
+        <p className="mt-2 font-body text-[13px] leading-snug text-ink/90 sm:text-sm">{retreatHostByline(r)}</p>
         <p className="mt-2 font-body text-sm font-medium text-terracotta">{r.dateLabel}</p>
         <p className="mt-1 font-body text-sm leading-relaxed text-muted">{r.location}</p>
 

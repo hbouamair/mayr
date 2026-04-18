@@ -50,8 +50,9 @@ export function TeamShowcase({ members }: { members: TeamMember[] }) {
               </div>
             </div>
             <div className="relative z-[1] mt-8 text-center sm:mt-9">
-              <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-                {member.flagCountryCode ? (
+              <h2 className="font-heading text-xl font-medium tracking-tight text-ink sm:text-2xl">{member.name}</h2>
+              {member.flagCountryCode ? (
+                <div className="mt-3 flex justify-center">
                   <span className="relative inline-flex h-[15px] w-[22px] shrink-0 overflow-hidden rounded-[3px] shadow-sm ring-1 ring-black/12">
                     <Image
                       src={`https://flagcdn.com/w40/${member.flagCountryCode}.png`}
@@ -62,10 +63,13 @@ export function TeamShowcase({ members }: { members: TeamMember[] }) {
                       sizes="22px"
                     />
                   </span>
-                ) : null}
-                <p className="font-body text-[10px] font-semibold tracking-[0.28em] text-terracotta/85 uppercase">{member.role}</p>
-              </div>
-              <h2 className="mt-2 font-heading text-xl font-medium tracking-tight text-ink sm:text-2xl">{member.name}</h2>
+                </div>
+              ) : null}
+              <p
+                className={`font-body text-[10px] font-semibold tracking-[0.28em] text-terracotta/85 uppercase ${member.flagCountryCode ? "mt-3" : "mt-2"}`}
+              >
+                {member.role}
+              </p>
               <div className="mx-auto mt-4 max-w-prose text-left">
                 {member.bio
                   .split(/\n\n+/)

@@ -47,6 +47,11 @@ export type RetreatListing = {
   placeNote: string;
   /** First day of the retreat (YYYY-MM-DD) — early-bird vs regular is derived from booking date vs this */
   retreatStartIso: string;
+  /** Last day of the retreat (YYYY-MM-DD) — used to show “past” on program cards */
+  retreatEndIso: string;
+  /** Lead / primary facilitator — shown on program cards */
+  hostName: string;
+  hostTitle: string;
 };
 
 export const retreatListings: RetreatListing[] = [
@@ -65,6 +70,9 @@ export const retreatListings: RetreatListing[] = [
       "With Christel Ingless, Business & Life Coach — a focused five-day immersion in the Agafay desert to reset clarity, leadership, and life rhythm.",
     placeKey: "Agafay Desert",
     retreatStartIso: "2026-03-31",
+    retreatEndIso: "2026-04-04",
+    hostName: "Christel Ingless",
+    hostTitle: "Business & Life Coach",
     ...programPhotos(0),
     placeNote:
       "Le désert d'Agafay — paysage minéral et horizons larges à une heure de Marrakech. Soirées sous les étoiles et retraites pensées pour l’ancrage et l’élan.",
@@ -84,6 +92,9 @@ export const retreatListings: RetreatListing[] = [
       "Four nights and five days in Marrakech — embodied practice, circle, and ritual space for the sacred feminine.",
     placeKey: "Marrakech",
     retreatStartIso: "2026-05-26",
+    retreatEndIso: "2026-05-30",
+    hostName: "Souha Majidi",
+    hostTitle: "Yoga teacher & sound healer",
     ...programPhotos(1),
     placeNote:
       "Hosted in Marrakech — riads, patios, and the pulse of the medina when you want color and contrast beside the mat.",
@@ -103,6 +114,9 @@ export const retreatListings: RetreatListing[] = [
       "A full week on the Atlantic coast — summer light, ocean air, and daily practice framed by Essaouira’s relaxed rhythm.",
     placeKey: "Essaouira",
     retreatStartIso: "2026-08-24",
+    retreatEndIso: "2026-08-30",
+    hostName: "Monica Oana",
+    hostTitle: "Yoga teacher",
     ...programPhotos(2),
     placeNote:
       "Essaouira — breezes, ramparts, and long skies. The pace softens; practice and free time balance naturally by the sea.",
@@ -122,6 +136,9 @@ export const retreatListings: RetreatListing[] = [
       "Six nights as the heat eases — autumn yoga in Marrakech with space to integrate, explore, and restore.",
     placeKey: "Marrakech",
     retreatStartIso: "2026-09-07",
+    retreatEndIso: "2026-09-13",
+    hostName: "Marrakech Alchemy",
+    hostTitle: "Lead teachers",
     ...programPhotos(3),
     placeNote:
       "Autumn in Marrakech — warm days, cooler evenings, and the gardens at their most inviting after summer.",
@@ -141,6 +158,9 @@ export const retreatListings: RetreatListing[] = [
       "An intensive 50-hour Vinyasa teacher training on the coast — skill-building, sequencing, and teaching labs over eight nights.",
     placeKey: "Essaouira",
     retreatStartIso: "2026-09-21",
+    retreatEndIso: "2026-09-29",
+    hostName: "Naia",
+    hostTitle: "Yoga teacher & trainer (US)",
     ...programPhotos(4),
     placeNote:
       "Essaouira offers a focused container: ocean light for study days, walkable medina breaks, and room to rehearse teaching in a small group.",
@@ -149,6 +169,18 @@ export const retreatListings: RetreatListing[] = [
 
 export function getRetreatBySlug(slug: string): RetreatListing | undefined {
   return retreatListings.find((r) => r.slug === slug);
+}
+
+/** True after the last day of the retreat (local calendar day, end of `retreatEndIso`). */
+export function isRetreatPast(r: RetreatListing, ref = new Date()): boolean {
+  const end = new Date(`${r.retreatEndIso}T23:59:59.999`);
+  return ref.getTime() > end.getTime();
+}
+
+/** Card line e.g. “April Empower Experience 2026 by Christel Ingless, Business & Life Coach”. */
+export function retreatHostByline(r: RetreatListing): string {
+  const month = retreatMonthDisplayName(r.monthKey);
+  return `${month} ${r.title} by ${r.hostName}, ${r.hostTitle}`;
 }
 
 export const retreatLanguages = ["all", "English", "French"] as const;

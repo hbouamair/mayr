@@ -10,7 +10,7 @@ import {
   useRef,
   useState,
 } from "react";
-import type { RetreatListing } from "@/lib/retreats";
+import { isRetreatPast, retreatHostByline, type RetreatListing } from "@/lib/retreats";
 
 type HomeRetreatCalendarCarouselProps = {
   listings: readonly RetreatListing[];
@@ -69,6 +69,7 @@ function SlideCard({
   i: number;
   total: number;
 }) {
+  const past = isRetreatPast(r);
   return (
     <article
       className={`home-carousel-slide shrink-0 transition-[transform,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
@@ -93,7 +94,12 @@ function SlideCard({
             sizes="(max-width: 640px) 28vw, (max-width: 1024px) 22vw, 18vw"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/5 to-transparent" />
-          <div className="absolute left-2 top-2 flex items-center gap-2 sm:left-2.5 sm:top-2.5">
+          <div className="absolute left-2 top-2 flex max-w-[calc(100%-1rem)] flex-wrap items-center gap-1.5 sm:left-2.5 sm:top-2.5">
+            {past ? (
+              <span className="rounded-full border border-white/35 bg-ink/55 px-2 py-0.5 font-body text-[7px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-md sm:text-[8px]">
+                Passed
+              </span>
+            ) : null}
             <span className="rounded-full border border-white/30 bg-ink/40 px-2 py-0.5 font-body text-[8px] font-semibold uppercase tracking-[0.18em] text-white/95 backdrop-blur-md sm:text-[9px]">
               {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </span>
@@ -106,6 +112,7 @@ function SlideCard({
           <h3 className="font-heading text-[0.88rem] font-medium leading-snug tracking-tight text-ink line-clamp-2 transition-colors duration-300 group-hover:text-terracotta sm:text-[0.92rem]">
             {r.title}
           </h3>
+          <p className="mt-1.5 line-clamp-3 font-body text-[9px] leading-snug text-ink/85 sm:text-[10px]">{retreatHostByline(r)}</p>
           <p className="mt-1.5 font-body text-[10px] tabular-nums leading-snug text-muted line-clamp-2 sm:text-[11px]">{r.dateLabel}</p>
           <span className="mt-auto inline-flex items-center gap-1.5 pt-2 font-body text-[8px] font-semibold uppercase tracking-[0.2em] text-terracotta sm:pt-2.5 sm:text-[9px]">
             View program
