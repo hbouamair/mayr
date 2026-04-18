@@ -12,12 +12,11 @@ import {
   WHATSAPP_LINK,
 } from "@/lib/site";
 
-/** Marco-style “Classes” column — core retreat journeys */
+/** Same retreat destinations as the home hero + header (“Our Programs”, MAYR, calendar). */
 const FOOTER_RETREAT_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/retreat-program", label: "Retreat program" },
-  { href: "/retreat-program#browse-retreats", label: "Retreat dates" },
-  { href: "/booking", label: "Book your spot" },
+  { href: "/retreat-program", label: "Our Programs" },
+  { href: "/booking", label: "MAYR Experience" },
+  { href: "/retreat-program#browse-retreats", label: "Retreat calendar" },
 ] as const;
 
 /** “Company” column */

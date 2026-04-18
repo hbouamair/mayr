@@ -53,12 +53,12 @@ export type MarrakechExperienceCard = {
 
 export const marrakechExperienceSectionIntro = {
   eyebrow: "MAYR Experience",
-  titleHighlight: "Marrakech Alchemy",
-  titleRest: "Yoga Retreats",
+  titleHighlight: "Marrakech Alchemy Yoga",
+  titleRest: "Retreat's experience",
   description:
     "Where you stay, what you eat, how you move, and how you meet the city — each pillar crafted for depth, ease, and a real sense of place.",
   href: "/booking",
-  cta: "Book MAYR",
+  cta: "Explore",
   secondaryHref: "/retreat-program#browse-retreats",
   secondaryCta: "View programs",
 } as const;
@@ -79,32 +79,32 @@ export const marrakechExperienceCards: readonly MarrakechExperienceCard[] = [
     href: "/booking",
   },
   {
-    id: "yoga-movement",
-    title: "Yoga & movement",
-    description: "Daily practice, sound, and embodied sessions that meet you where you are.",
+    id: "yoga-sound",
+    title: "Yoga & sound journeys",
+    description: "Daily practice, healing sound, and embodied sessions that meet you where you are.",
     imageSrc: publicAssetPath("activity/c90edcc0-eae3-4488-8b44-339e07bb9f7a.JPG"),
-    href: "/yoga-studio",
-  },
-  {
-    id: "cultural",
-    title: "Cultural discovery",
-    description: "Medina walks, craft, ritual, and curated excursions beyond the mat.",
-    imageSrc: publicAssetPath("background/Copie_de_IMG_3680.jpg"),
-    href: "/retreat-program#browse-retreats",
+    href: "/booking",
   },
   {
     id: "wellness",
-    title: "Wellness & restoration",
+    title: "Wellness and relaxation experiences",
     description: "Hammam, pools, and time to soften — pace built for renewal.",
     imageSrc: publicAssetPath("DSC07186.jpeg"),
     href: "/booking",
   },
   {
-    id: "community",
-    title: "Connection & community",
-    description: "Circles, shared meals, and the warmth of traveling together.",
+    id: "workshops-circles",
+    title: "Workshops & women circles",
+    description: "Workshops, women’s circles, and heart-centered space to gather and share.",
     imageSrc: publicAssetPath("accomondation/IMG_5206.jpg"),
-    href: "/about",
+    href: "/booking",
+  },
+  {
+    id: "activities-excursions",
+    title: "Activities & excursions",
+    description: "Medina walks, craft, ritual, and curated outings beyond the mat.",
+    imageSrc: publicAssetPath("background/Copie_de_IMG_3680.jpg"),
+    href: "/booking",
   },
 ];
 

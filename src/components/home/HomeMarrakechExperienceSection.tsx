@@ -62,7 +62,7 @@ export function HomeMarrakechExperienceSection() {
 
           <div className="relative z-[1] mx-auto max-w-6xl">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
-              <div className="min-w-0 max-w-3xl">
+              <div className="min-w-0 flex-1 max-w-5xl lg:pr-4">
                 <div className="inline-flex items-center gap-3">
                   <span
                     className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-terracotta/15 to-terracotta/5 text-terracotta shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] ring-1 ring-terracotta/20 sm:h-12 sm:w-12"
@@ -74,7 +74,7 @@ export function HomeMarrakechExperienceSection() {
                     {intro.eyebrow}
                   </span>
                 </div>
-                <div className="mt-5 min-w-0">
+                <div className="mt-5 min-w-0 w-full overflow-x-auto overflow-y-visible [-webkit-overflow-scrolling:touch] [scrollbar-width:thin]">
                   <EditorialSectionTitle
                     id="marrakech-experience-heading"
                     as="h2"
@@ -82,7 +82,7 @@ export function HomeMarrakechExperienceSection() {
                     align="left"
                     highlight={intro.titleHighlight}
                     rest={intro.titleRest}
-                    className="max-w-[min(100%,28rem)] sm:max-w-none"
+                    className="w-max max-w-none whitespace-nowrap pr-1"
                   />
                 </div>
                 <p className="mt-6 max-w-xl font-body text-[16px] font-light leading-[1.8] text-muted md:text-[17px]">
