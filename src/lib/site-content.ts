@@ -1,6 +1,45 @@
 /** Editorial copy from Marrakech Alchemy website brief (DOCX / client paste). */
 
 import { buildAccommodationGallery, buildFoodGallery } from "./media-assets";
+import { retreatListings } from "./retreats";
+
+function utcMonthLong(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y!, m! - 1, d!)).toLocaleString("en-GB", { month: "long", timeZone: "UTC" });
+}
+
+/** One row on the 2026 calendar — sourced from `retreatListings` so dates match /retreat-program. */
+export type RetreatCalendar2026Entry = {
+  id: string;
+  month: string;
+  title: string;
+  description: string;
+  dateRange: string;
+};
+
+export const retreatCalendar2026: RetreatCalendar2026Entry[] = retreatListings.map((r) => {
+  const dateRange = r.dateLabel.includes(" · ") ? r.dateLabel.split(" · ")[0]! : r.dateLabel;
+  return {
+    id: r.id,
+    month: utcMonthLong(r.retreatStartIso),
+    title: r.title,
+    description: r.summary,
+    dateRange,
+  };
+});
+
+export const retreatCalendar2026Intro =
+  "Five curated weeks from spring through autumn — Agafay, Marrakech, and Essaouira. Choose a week below to book your room; when you submit, we open WhatsApp with your details ready to send.";
+
+/** Default note in the booking form when opened from a calendar week. */
+export function retreatCalendarWeekBookingPrefill(entry: RetreatCalendar2026Entry): string {
+  return [
+    `I'd like to book: ${entry.title}`,
+    `Preferred dates: ${entry.dateRange} (2026)`,
+    "",
+    "Please confirm availability and next steps.",
+  ].join("\n");
+}
 
 export const heroTagline = "Awaken • Connect • Restore";
 
