@@ -1,14 +1,12 @@
 /** Editorial copy from Marrakech Alchemy website brief (DOCX / client paste). */
 
-import {
-  buildAccommodationGallery,
-  buildFoodGallery,
-  MEDIA_ACTIVITY_PATHS,
-} from "./media-assets";
+import { buildAccommodationGallery, buildFoodGallery } from "./media-assets";
 import { publicAssetPath } from "./public-path";
+import { SITE_SECTION_KICKER } from "./site";
+import type { RetreatListing } from "./retreats";
 import { retreatListings } from "./retreats";
 
-export const heroTagline = "Awaken • Connect • Restore";
+export const heroTagline = SITE_SECTION_KICKER;
 
 /** Line under the main hero title (legacy mayr.ma home) */
 export const heroSubtagline = "Where Moroccan charm meets yoga serenity";
@@ -18,7 +16,7 @@ export const homeIntro =
 
 /** Home landing — MAYR block (links to /booking) */
 export const homeMayrSummary = {
-  eyebrow: "MAYR",
+  eyebrow: SITE_SECTION_KICKER,
   title: "Marrakech Alchemy Experience",
   href: "/booking",
   cta: "Discover MAYR",
@@ -31,136 +29,112 @@ export const homeMayrParagraphs: readonly string[] = [
   "Whether you join us for a short immersion or a full week, every MAYR journey is paced for renewal: space to arrive, practice deeply, explore with intention, and leave with clarity and warmth you can carry home.",
 ];
 
-/** Home landing — program calendar intro */
+/** Home landing — retreat calendar intro */
 export const homeProgramSummary = {
-  eyebrow: "2026 season",
-  title: "Program calendar",
-  titleHighlight: "Program calendar",
-  description: "Five dates — tap a card for details, pricing, and booking.",
-  href: "/retreat-program#browse-retreats",
-  cta: "Browse all programs",
-} as const;
-
-const RETREAT_MONTH_LABEL: Record<string, string> = {
-  apr: "April",
-  may: "May",
-  aug: "August",
-  sep: "September",
-};
-
-export type RetreatCalendar2026Entry = {
-  id: string;
-  month: string;
-  title: string;
-  description: string;
-  dateRange: string;
-};
-
-function retreatDateRangeFromLabel(dateLabel: string): string {
-  const head = dateLabel.split(" · ")[0];
-  return head?.trim() || dateLabel;
-}
-
-/** Scheduled weeks — same programs as `retreatListings`, formatted for the 2026 calendar section */
-export const retreatCalendar2026: readonly RetreatCalendar2026Entry[] = retreatListings.map((r) => ({
-  id: r.id,
-  month: RETREAT_MONTH_LABEL[r.monthKey] ?? r.monthKey,
-  title: r.title,
-  description: r.summary,
-  dateRange: retreatDateRangeFromLabel(r.dateLabel),
-}));
-
-export const retreatCalendar2026Intro = {
   eyebrow: "2026 season",
   titleHighlight: "Retreat calendar",
   description:
     "Five scheduled weeks — preview two programs at a time, then open a week for details, pricing, and booking.",
+  /** Longer lead for `/retreat-program` (filters + catalog below) */
   descriptionProgramPage:
-    "Each card uses a poster from the season. Use the filters below to narrow by date, place, language, or focus.",
+    "Each card uses a poster from the season. Use the filters below to narrow place, month, or availability — then open a program for the full story, gallery, and how to reserve.",
+  href: "/retreat-program#browse-retreats",
+  cta: "Browse all programs",
 } as const;
 
-export function retreatCalendarWeekBookingPrefill(entry: RetreatCalendar2026Entry): string {
-  return [
-    `Hello — I'm interested in booking: ${entry.title}.`,
-    `Dates: ${entry.dateRange} (${entry.month} 2026).`,
-    "Please share availability and next steps. Thank you!",
-  ].join("\n");
-}
+/** Home — Marrakech Alchemy Experience grid (image cards) */
+export type MarrakechExperienceCard = {
+  id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  href: string;
+};
 
+export const marrakechExperienceSectionIntro = {
+  eyebrow: "MAYR Experience",
+  titleHighlight: "Marrakech Alchemy",
+  titleRest: "Yoga Retreats",
+  description:
+    "Where you stay, what you eat, how you move, and how you meet the city — each pillar crafted for depth, ease, and a real sense of place.",
+  href: "/booking",
+  cta: "Book MAYR",
+  secondaryHref: "/retreat-program#browse-retreats",
+  secondaryCta: "View programs",
+} as const;
+
+export const marrakechExperienceCards: readonly MarrakechExperienceCard[] = [
+  {
+    id: "accommodation",
+    title: "Accommodation experience",
+    description: "Boutique riads, desert light, and spaces chosen for calm and character.",
+    imageSrc: publicAssetPath("accomondation/IMG_5205.jpg"),
+    href: "/booking",
+  },
+  {
+    id: "culinary",
+    title: "Culinary experience",
+    description: "Moroccan tables — nourishing meals, local ingredients, and shared moments.",
+    imageSrc: publicAssetPath("food/IMG_5261.jpg"),
+    href: "/booking",
+  },
+  {
+    id: "yoga-movement",
+    title: "Yoga & movement",
+    description: "Daily practice, sound, and embodied sessions that meet you where you are.",
+    imageSrc: publicAssetPath("activity/c90edcc0-eae3-4488-8b44-339e07bb9f7a.JPG"),
+    href: "/yoga-studio",
+  },
+  {
+    id: "cultural",
+    title: "Cultural discovery",
+    description: "Medina walks, craft, ritual, and curated excursions beyond the mat.",
+    imageSrc: publicAssetPath("background/Copie_de_IMG_3680.jpg"),
+    href: "/retreat-program#browse-retreats",
+  },
+  {
+    id: "wellness",
+    title: "Wellness & restoration",
+    description: "Hammam, pools, and time to soften — pace built for renewal.",
+    imageSrc: publicAssetPath("DSC07186.jpeg"),
+    href: "/booking",
+  },
+  {
+    id: "community",
+    title: "Connection & community",
+    description: "Circles, shared meals, and the warmth of traveling together.",
+    imageSrc: publicAssetPath("accomondation/IMG_5206.jpg"),
+    href: "/about",
+  },
+];
+
+/**
+ * About page gallery — add or reorder entries; paths are under `public/` (use `publicAssetPath`).
+ * First three power the bento hero; optional fourth renders as a wide band below.
+ */
 export type AboutPageGalleryImage = {
   src: string;
   alt: string;
 };
 
-/** Editorial gallery on /about — accommodation stills plus retreat activity photography */
 export const aboutPageGalleryImages: readonly AboutPageGalleryImage[] = [
-  ...buildAccommodationGallery(),
   {
-    src: publicAssetPath(MEDIA_ACTIVITY_PATHS[0]!),
-    alt: "Retreat activity — culture and connection in Morocco",
+    src: publicAssetPath("background/Copie_de_IMG_3680.jpg"),
+    alt: "Moroccan setting and warm light at the retreat",
   },
   {
-    src: publicAssetPath(MEDIA_ACTIVITY_PATHS[1]!),
-    alt: "Workshop or gathering during the yoga retreat",
+    src: publicAssetPath("activity/c90edcc0-eae3-4488-8b44-339e07bb9f7a.JPG"),
+    alt: "Yoga and movement during a Marrakech Alchemy retreat",
+  },
+  {
+    src: publicAssetPath("accomondation/IMG_5205.jpg"),
+    alt: "Calm retreat accommodation and interiors",
+  },
+  {
+    src: publicAssetPath("DSC07117.jpeg"),
+    alt: "Atmosphere and landscape around the retreat experience",
   },
 ];
-
-export const marrakechExperienceSectionIntro = {
-  eyebrow: "Marrakech Alchemy",
-  titleHighlight: "Experience",
-  titleRest: "Morocco with us",
-  description:
-    "From Agafay stone light to Essaouira’s Atlantic breeze — curated weeks that blend practice, culture, and space to arrive fully.",
-  href: "/retreat-program#browse-retreats",
-  cta: "Browse 2026 retreats",
-  secondaryHref: "/booking",
-  secondaryCta: "Book your room",
-} as const;
-
-export const marrakechExperienceCards = [
-  {
-    id: "calendar",
-    href: "/retreat-program#browse-retreats",
-    imageSrc: publicAssetPath(MEDIA_ACTIVITY_PATHS[0]!),
-    title: "Program calendar",
-    description: "Five scheduled weeks — tap through posters, then open a retreat for dates and booking.",
-  },
-  {
-    id: "desert",
-    href: "/retreat-program",
-    imageSrc: publicAssetPath(MEDIA_ACTIVITY_PATHS[1]!),
-    title: "Desert & Agafay",
-    description: "Mineral horizons and starlit evenings — short immersions with room to reset.",
-  },
-  {
-    id: "medina",
-    href: "/retreat-program",
-    imageSrc: publicAssetPath(MEDIA_ACTIVITY_PATHS[2]!),
-    title: "Marrakech medina",
-    description: "Riads, patios, and the pulse of the red city beside the mat.",
-  },
-  {
-    id: "coast",
-    href: "/retreat-program",
-    imageSrc: publicAssetPath(MEDIA_ACTIVITY_PATHS[3]!),
-    title: "Atlantic weeks",
-    description: "Essaouira light — longer stays where ocean air softens the rhythm.",
-  },
-  {
-    id: "booking",
-    href: "/booking",
-    imageSrc: publicAssetPath(MEDIA_ACTIVITY_PATHS[4]!),
-    title: "Rooms & pricing",
-    description: "Private, twin, and triple options — deposit to hold your spot.",
-  },
-  {
-    id: "about",
-    href: "/about",
-    imageSrc: publicAssetPath(MEDIA_ACTIVITY_PATHS[5]!),
-    title: "Our story",
-    description: "How Marrakech Alchemy holds retreat weeks and wellness in Morocco.",
-  },
-] as const;
 
 export const aboutParagraphs = [
   "Marrakech Alchemy Yoga Retreats was born in 2024 from a vision to merge the tranquil essence of Bali with the mystic beauty of Morocco, creating a unique yoga experience rooted in both cultural richness and spiritual depth.",
@@ -322,32 +296,62 @@ export const accommodationGalleryImages: { src: string; alt: string }[] = buildA
 export type TeamMember = {
   name: string;
   role: string;
+  /** ISO 3166-1 alpha-2 (lowercase) — flag image beside role (avoids emoji rendering as “MA” on some systems) */
+  flagCountryCode?: string;
   /** Use blank lines (\n\n) for separate paragraphs */
   bio: string;
   /** Optional portrait from /public (e.g. /team/name.jpg) */
   image?: { src: string; alt: string };
-  /** ISO 3166-1 alpha-2 for flagcdn.com, e.g. ca, ma */
-  flagCountryCode?: string;
   instagramUrl?: string;
 };
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Monica Oana",
-    role: "Yoga teacher · Canada",
-    flagCountryCode: "ca",
-    bio: "With 15 years of personal practice, Monica's yoga journey began as a way to deepen her own connection to the practice. After attending a transformative teacher training retreat in the Alps, in France, she moved to Morocco, where she discovered her passion for teaching. What started as a simple desire to share yoga has blossomed into over 5 years of inspiring students on their own journeys. Monica's classes are a reflection of her love for yoga, and she's dedicated to creating a supportive space where everyone can grow and thrive on and off the mat.",
-    instagramUrl: "https://www.instagram.com/hamonica_yoga?igsh=eW03aDF1Z211aTQ=",
-  },
-  {
-    name: "Souha Majidi",
-    role: "Yoga teacher · Sound healer · Space holder",
+    name: "Souha",
+    role: "Yoga teacher & sound healer",
     flagCountryCode: "ma",
-    bio: "Souha is a yoga teacher, sound healer and space holder dedicated to guiding others on their journey of self-discovery and transformation. With a background in international relations, she transitioned from a corporate career to fully embrace the world of yoga and holistic healing.\n\nHer journey led her to complete a 200-hour Yoga Teacher Training and an advanced sound healing training in Bali. For nearly two years, she worked as school manager at House of Om Yoga school, where she held space for more than 20 yoga teacher training groups, facilitating transformational journeys for students from all over the world. She also led women's circles and group sound healing sessions, creating safe and sacred spaces for connection, sharing, and empowerment.\n\nAt the heart of her work is a passion for holding space—whether through movement, sound, or soulful gatherings—helping others reconnect with themselves and find healing through authentic experiences.",
+    bio: "Rooted in the mysticism of Morocco, born in Marrakech and based in Bali, Souha carries the grace of inner transformation. She is a yoga teacher and sound healer with 4 years of teaching and 8 years of constant practice. With a background in political science and international organizations, she bridges the worlds of intellect and intuition. A gifted singer and holder of spaces rooted in the healing arts, she holds heart-centered spaces, blending yoga, sound and voice to guide others to deep connection and stillness.",
     image: {
       src: "/team/souha-majidi.jpg",
-      alt: "Souha Majidi — yoga teacher and sound healer, in warm Moroccan light",
+      alt: "Souha — yoga teacher and sound healer",
     },
     instagramUrl: "https://www.instagram.com/souha.majidi?igsh=ZjYzYTYwdmpxcWRw&utm_source=qr",
   },
+  {
+    name: "Daniela",
+    role: "Cacao master & sound healer",
+    flagCountryCode: "mx",
+    bio: "Rooted in the ancestral wisdom of Mexico and based in Los Angeles, Daniela is a space holder devoted to heart-opening ritual and deep connection.\n\nFounder of Soela, a wellness space inspired by nature and intentional living, she guides cacao ceremonies and sound journeys that draw from ancient traditions. Her offerings are a soulful invitation to reconnect with self, spirit, and community through the healing power of presence, rhythm, and sacred plant medicine.",
+  },
+  {
+    name: "Kiana",
+    role: "Yoga & Pilates teacher",
+    flagCountryCode: "ca",
+    bio: "Born in Iran and raised in Canada, Kiana blends creative expression with deep physical awareness to guide transformative movement experiences.\n\nWith a background in the performing arts, she brings presence, creativity, and fluidity into every class. Now based in Dubai, she is a dedicated and skilled teacher of yoga and Pilates, known for her focus on core strength, alignment, and breath. Her teaching is grounding and empowering, inviting students to build resilience, deepen body awareness, and move with confidence.",
+  },
+  {
+    name: "Naia",
+    role: "Yoga teacher trainings",
+    flagCountryCode: "us",
+    bio: "Based in Bali, Naia is a yoga teacher with over 8 years of teaching experience, including 4 years leading 200- and 300-hour yoga teacher trainings. Her journey began in New York with the Bikram series before expanding into Vinyasa, Ashtanga, and Classic Hatha through advanced study in India, as well as Yin and somatic practices in Bali and Thai Hermit Yoga (Rusii Datton) in Thailand.\n\nNaia’s teaching blends intentional movement, breath awareness, and embodied presence. Her classes are both grounding and expansive, inviting students to explore creative flows, refine key asanas, and cultivate deeper self-awareness.",
+  },
 ];
+
+/** 2026 program weeks — aligned with `retreatListings` (catalog, dates, default room tier). */
+export type RetreatCalendar2026Entry = RetreatListing;
+
+export const retreatCalendar2026: readonly RetreatCalendar2026Entry[] = retreatListings;
+
+/** Intro block for calendar UI — same intent as the home program strip. */
+export const retreatCalendar2026Intro = homeProgramSummary;
+
+/** Default booking fields when opening the form from a specific 2026 week. */
+export function retreatCalendarWeekBookingPrefill(entry: RetreatCalendar2026Entry): {
+  offerId: string;
+  message: string;
+} {
+  return {
+    offerId: entry.offerId,
+    message: `I'm interested in ${entry.title} (${entry.dateLabel}).`,
+  };
+}
