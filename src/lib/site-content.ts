@@ -35,6 +35,9 @@ export const homeProgramSummary = {
   titleHighlight: "Retreat calendar",
   description:
     "Five scheduled weeks — preview two programs at a time, then open a week for details, pricing, and booking.",
+  /** Longer lead for `/retreat-program` (filters + catalog below) */
+  descriptionProgramPage:
+    "Each card uses a poster from the season. Use the filters below to narrow place, month, or availability — then open a program for the full story, gallery, and how to reserve.",
   href: "/retreat-program#browse-retreats",
   cta: "Browse all programs",
 } as const;
